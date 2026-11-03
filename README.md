@@ -1,65 +1,34 @@
-# Phạm Quang Huy — portfolio
+# Phạm Quang Huy · Mobile Developer
 
-Production: https://pham-quang-huy-portfolio.vercel.app
+Từ nghiệp vụ thực tế đến trải nghiệm trên di động.
 
-Local project: `E:\du-an-ca-nhan\portfolio-moi`
+Tôi là Huy, một Mobile Developer làm việc với **Flutter** và **React Native**. Portfolio này giới thiệu những sản phẩm tôi tham gia phát triển, kinh nghiệm làm việc và cách tôi kết nối luồng dữ liệu với trải nghiệm người dùng.
 
-React 19.3 + Vite + TypeScript + React Router. Vietnamese/English, light/dark/system themes. No backend or environment secrets are needed.
+**[Khám phá portfolio →](https://pham-quang-huy-portfolio.vercel.app)**
 
-## Development
+## Về tôi
 
-```powershell
-npm ci
-npm run dev
-npm run build
-npm run preview
-```
+Tôi có nền tảng Kỹ thuật phần mềm tại Đại học Công nghệ TP.HCM và đang làm việc tại Mebisoft với vai trò Fresher Mobile Developer. Các dự án tôi tham gia trải rộng từ CRM và chăm sóc khách hàng đến vận hành nuôi tôm và mua sắm.
 
-When the restricted Windows execution environment blocks esbuild child-process pipes with `spawn EPERM`, use `npm run build:portable`. This still uses Vite/Rollup, TypeScript and Tailwind, and minifies with Terser in process. The standard `npm run build` remains the Vercel command.
+Tôi quan tâm đến cách tổ chức mã nguồn, quản lý trạng thái và tích hợp API để mỗi tính năng hoạt động xuyên suốt. Nền tảng backend giúp tôi hiểu luồng dữ liệu và phối hợp giữa ứng dụng di động với hệ thống phía sau.
 
-## Pages
+## Dự án tiêu biểu
 
-- `/`: overview and selected projects.
-- `/projects`: company projects, platform filter and personal work.
-- `/projects/mebione`, `/projects/dss`, `/projects/mebipha`: independent project pages, verified contributions, technology and store links.
-- `/about`: profile, education and professional experience.
-- `/skills`: toolkit.
-- `/contact`: email, copy-email control, GitHub, LinkedIn and CV.
-- Unknown routes show a designed 404 page.
+| Dự án | App Store | CH Play |
+| --- | :---: | :---: |
+| **Mebione / Mebieco** | [![App Store](https://img.shields.io/badge/App_Store-0D96F6?style=flat&logo=appstore&logoColor=white)](https://apps.apple.com/vn/app/mebieco/id6757392489) | [![CH Play](https://img.shields.io/badge/CH_Play-414141?style=flat&logo=googleplay&logoColor=white)](https://play.google.com/store/apps/details?id=com.mebisoft.mebieco) |
+| **DSS-CRM / DSS** | [![App Store](https://img.shields.io/badge/App_Store-0D96F6?style=flat&logo=appstore&logoColor=white)](https://apps.apple.com/vn/app/dss/id6801755603) | [![CH Play](https://img.shields.io/badge/CH_Play-414141?style=flat&logo=googleplay&logoColor=white)](https://play.google.com/store/apps/details?id=vn.com.datgroup.dss) |
 
-Navigation uses real URLs rather than section anchors. Vercel rewrites preserve direct opening and refresh on nested URLs. Browser history and an accessible main-content focus are handled on route changes.
+Không chỉ miệt mài với những dự án trên công ty mà tôi cũng tự mài dũa thêm các kỹ năng qua một số dự án cá nhân.
 
-## Animate UI
+## Ngôn ngữ & công nghệ
 
-- Official React Router Page Transition with `effect="stack"`. Back links use its `nav-back` type. Browsers without View Transitions navigate immediately. Browser Back in the upstream React Router implementation may not animate; it remains functional.
-- Official Theme Toggler and its animated button/icon. The selection is saved as `portfolio-theme`; an early script applies it before the app mounts.
-- Official Button, Collapsible, Context Menu and Dropdown Menu primitives. Project menus open by right-click or a visible ellipsis button.
-- Animated Lucide icons copied from the Animate UI registry. No static Lucide components or Unicode pictograms are used for controls.
-- Official navigation Highlight and Fade entrances. Animate UI's provider and reduced-motion configuration govern the primitives. Optional Magic UI BlurFade remains available.
-- Outfit, the font used by Animate UI, is self-hosted; Be Vietnam Pro supplies fallback Vietnamese glyphs. Font OFL notices are included under `public/fonts`.
+| Nhóm | Công nghệ |
+| --- | --- |
+| Ngôn ngữ | ![Dart](https://img.shields.io/badge/Dart-0175C2?style=flat&logo=dart&logoColor=white) ![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=flat&logo=typescript&logoColor=white) <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/java/java-original.svg" height="20" alt="Java logo" /> Java |
+| Phát triển di động | ![Flutter](https://img.shields.io/badge/Flutter-02569B?style=flat&logo=flutter&logoColor=white) ![React Native](https://img.shields.io/badge/React_Native-20232A?style=flat&logo=react&logoColor=61DAFB) ![Expo](https://img.shields.io/badge/Expo-000020?style=flat&logo=expo&logoColor=white) |
+| Quản lý trạng thái & dữ liệu | <img src="https://raw.githubusercontent.com/felangel/bloc/master/assets/logos/bloc.png" height="20" alt="BLoC" /> ![Zustand](https://img.shields.io/badge/Zustand-443E38?style=flat&logo=zustand&logoColor=white) ![Redux Toolkit](https://img.shields.io/badge/Redux_Toolkit-764ABC?style=flat&logo=redux&logoColor=white) ![Redux Saga](https://img.shields.io/badge/Redux_Saga-999999?style=flat&logo=reduxsaga&logoColor=white) ![TanStack Query](https://img.shields.io/badge/TanStack_Query-FF4154?style=flat&logo=reactquery&logoColor=white) |
 
-Registry configuration: `components.json`. Project-local skill: `.agents/skills/animate-ui`. Project-local MCP: `.codex/config.toml`. Detailed component origins: `COMPONENT-SOURCES.md`. Retain `THIRD-PARTY-LICENSES.txt` and font notices when distributing source.
+## Kết nối
 
-## Content
-
-`src/content.ts` contains bilingual copy, project details, technology and store links. `src/pages/PortfolioPages.tsx` renders the pages. `src/App.tsx` owns navigation and the application frame; `src/styles.css` owns the responsive layout and themes.
-
-Employer/title: Mebisoft, Fresher Mobile Developer, November 2025–present. Personal contributions were checked against Git history and confirmed by Huy. Mebione is published as **Mebieco**; DSS-CRM as **DSS**. Both have Google Play and App Store links. Mebipha remains described as development work. No company source, internal screenshots or customer data is included. Illustrations are feature maps, not application screenshots.
-
-The latest English CV is served as `public/PhamQuangHuy_CV.pdf`. Contact uses mailto and clipboard; it does not pretend to send a server form.
-
-## Verification
-
-TypeScript and the portable Vite build pass. Semantic DOM checks pass for route navigation, project filtering, detail pages, collapse/expand, both menu entry points, theme persistence, language, browser Back and 404 handling. The DOM harness uses platform shims and does not check animation appearance or responsive geometry.
-
-Visual browser QA was interrupted because the computer-use safety layer could not determine Chrome's current URL confidently. Animation frames, real font rendering and mobile geometry still require a visual review. No alternate browser-control mechanism was used to bypass that stop.
-
-## Deployment
-
-The linked Vercel project is `huyit203s-projects/pham-quang-huy-portfolio`. Confirm the target with `vercel project inspect --non-interactive` before running `vercel deploy --prod`. Credentials and `.vercel` state must remain outside source archives.
-
-
-Primary font updated at the owner’s request to **Playfair Display** (400–900), self-hosted from the official Google Fonts repository. Vietnamese coverage is confirmed in upstream METADATA.pb. Font source: https://github.com/google/fonts/tree/main/ofl/playfairdisplay . License: `public/fonts/PlayfairDisplay-OFL.txt`. Outfit remains as an unused optional asset.
-
-
-Current primary font: **Merriweather Sans**, self-hosted from the official Google Fonts repository, with Vietnamese coverage confirmed in upstream metadata. Source: https://github.com/google/fonts/tree/main/ofl/merriweathersans . License: `public/fonts/MerriweatherSans-OFL.txt`. This supersedes the Playfair Display trial.
+[Portfolio](https://pham-quang-huy-portfolio.vercel.app) · [GitHub](https://github.com/huyIT203) · [LinkedIn](https://www.linkedin.com/in/ph%E1%BA%A1mquanghuy) · [CV tiếng Anh](https://pham-quang-huy-portfolio.vercel.app/PhamQuangHuy_CV.pdf)
