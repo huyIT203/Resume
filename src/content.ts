@@ -1,0 +1,73 @@
+export type Locale = 'vi' | 'en'
+export type Project = {
+  id: string; name: string; domain: [string,string]; summary: [string,string];
+  detail: [string,string]; stack: string[]; modules: [string[],string[]]; note: [string,string]; color: string; stores?: { google: string; apple: string; name: string }
+}
+export const projects: Project[] = [
+  { id:'mebione', name:'Mebione', domain:['Vận hành nuôi tôm','Aquaculture operations'],
+    summary:['Từ ao nuôi đến quyết định vận hành.','From pond operations to informed decisions.'],
+    detail:['Ứng dụng di động kết nối hoạt động ao nuôi, kế hoạch sản xuất, báo cáo và điều khiển thiết bị. Tôi tham gia phát triển các module nghiệp vụ và tích hợp dịch vụ AI cho quy trình nuôi tôm.','A mobile application connecting pond operations, production planning, reporting and device controls. I contribute business modules and integrate AI services into shrimp-farming workflows.'],
+    stack:['React Native','Expo','TypeScript','Zustand','TanStack Query'],
+    stores:{google:'https://play.google.com/store/apps/details?id=com.mebisoft.mebieco',apple:'https://apps.apple.com/vn/app/mebieco/id6757392489',name:'Mebieco'},
+    modules:[['Báo cáo & biểu đồ vận hành','Kế hoạch nuôi và CRUD khu nuôi','Lập lịch điều khiển thiết bị','Chatbot UI & tích hợp API','Nhật ký cho ăn','Tích hợp AI sức khỏe tôm'],['Operational reports & charts','Farming plans and farm-area CRUD','Device control schedules','Chatbot UI & API integration','Feeding logs','Shrimp health AI service integration']],
+    note:['Phát triển ứng dụng và tích hợp dịch vụ AI; không phải xây dựng mô hình AI.','Application development and AI service integration; not AI model development.'], color:'aqua' },
+  { id:'dss', name:'DSS-CRM', domain:['CRM & tổng đài','CRM & call center'],
+    summary:['Ngữ cảnh khách hàng. Ngay trong cuộc gọi.','Customer context. Right in the conversation.'],
+    detail:['Ứng dụng Flutter cho quy trình bán hàng và chăm sóc khách hàng. Tôi tham gia Customer360, cơ hội bán hàng, chuyển đổi lead và trải nghiệm cuộc gọi tích hợp.','A Flutter application supporting sales and customer care. My contributions span Customer360, sales opportunities, lead conversion and integrated calling experiences.'],
+    stack:['Flutter','Dart','BLoC','Dio','SIP / WebRTC'],
+    stores:{google:'https://play.google.com/store/apps/details?id=vn.com.datgroup.dss',apple:'https://apps.apple.com/vn/app/dss/id6801755603',name:'DSS'},
+    modules:[['Hồ sơ khách hàng Customer360','Cơ hội bán hàng & giai đoạn','Chuyển đổi khách hàng tiềm năng','VoIP, bàn phím số & cuộc gọi','Thông báo với BLoC','Form khách hàng & phân quyền'],['Customer360 profiles','Sales opportunities & stages','Lead conversion','VoIP, dialpad & active calls','BLoC notifications','Customer forms & permissions']],
+    note:['Các module CRM và tổng đài được trình bày theo phạm vi đóng góp.','CRM and call-center modules are presented within my contribution scope.'], color:'blue' },
+  { id:'mebipha', name:'Mebipha', domain:['Danh mục & mua sắm','Product discovery & shopping'],
+    summary:['Một hành trình tìm sản phẩm liền mạch.','A connected product discovery experience.'],
+    detail:['Ứng dụng React Native cho trải nghiệm tìm kiếm sản phẩm và giỏ hàng. Tôi tham gia các luồng tài khoản, danh mục, chi tiết sản phẩm và lớp dữ liệu giỏ hàng.','A React Native application for product discovery and shopping baskets. I contribute account flows, categories, product details and basket data integration.'],
+    stack:['React Native','TypeScript','Redux Toolkit','Redux Saga','Zod'],
+    modules:[['Đăng nhập & xác thực OTP','Tìm kiếm & phân trang sản phẩm','Quản lý địa chỉ CRUD','Danh mục & bộ lọc','Lớp dữ liệu giỏ hàng','Chi tiết sản phẩm & API'],['Sign-in & OTP verification','Product search & pagination','Address CRUD','Categories & filters','Basket data layer','Product details & APIs']],
+    note:['Một số module đang phát triển; không khẳng định đã phát hành toàn bộ luồng mua hàng.','Some modules are in development; this does not imply a fully released purchase flow.'], color:'peach' }
+]
+export const copy = {
+  vi: {
+    nav:['Trang chủ','Dự án','Về tôi','Kỹ năng','Liên hệ'], role:'Mobile Developer',
+    eyebrow:'PHẠM QUANG HUY · PORTFOLIO', hero1:'Từ nghiệp vụ.',hero2:'Đến trải nghiệm',hero3:'trên di động.',
+    intro:'Tôi xây dựng ứng dụng với Flutter và React Native, kết nối những quy trình thực tế với trải nghiệm dễ sử dụng.',
+    view:'Khám phá dự án', cv:'Tải CV tiếng Anh', current:'Hiện tại tại Mebisoft', since:'Từ tháng 11/2025',
+    heroNote:'Một góc nhìn về sản phẩm tôi đang xây dựng.', diagram:'Sơ đồ tính năng minh họa',
+    selected:'DỰ ÁN CÔNG TY', workTitle:'Sản phẩm thật. Bài toán thật.',
+    workIntro:'Ba lĩnh vực khác nhau, cùng một mối quan tâm: đưa nghiệp vụ lên di động một cách rõ ràng và nhất quán.',
+    all:'Tất cả', detail:'Xem đóng góp', close:'Đóng chi tiết', contribution:'Các module tôi tham gia', stack:'Công nghệ sử dụng', projectLabel:'Dự án công ty · Mebisoft',
+    aboutLabel:'VỀ TÔI', aboutTitle:'Hiểu luồng dữ liệu. Chăm chút từng tương tác.',
+    aboutText:'Tôi là Huy, Fresher Mobile Developer tại Mebisoft. Từ nền tảng Flutter, tôi tiếp tục làm việc với React Native và các bài toán về CRM, vận hành nuôi tôm và trải nghiệm mua sắm.',
+    aboutText2:'Tôi quan tâm cách tổ chức code, quản lý trạng thái và tích hợp API để một tính năng có thể vận hành xuyên suốt. Nền tảng backend giúp tôi phối hợp tốt hơn giữa ứng dụng và hệ thống phía sau.',
+    education:'Kỹ thuật phần mềm · HUTECH', educationDate:'2021–2025', job:'Fresher Mobile Developer', jobDate:'11/2025–Hiện tại',
+    skillsLabel:'BỘ CÔNG CỤ',skillsTitle:'Chọn công cụ theo bài toán.',
+    skillGroups:['Ứng dụng di động','Trạng thái & dữ liệu','Tích hợp & nền tảng','Cách tôi làm việc'],
+    ways:['Tổ chức code theo tính năng','Phân tích luồng nghiệp vụ','Đọc tài liệu & tự học','Phối hợp mobile – backend'],
+    personal:'DỰ ÁN CÁ NHÂN', personalTitle:'Nơi tôi thử nghiệm và học hỏi.',
+    outfit:'Quản lý tủ đồ, lên lịch OOTD và xác thực tài khoản với Flutter.', food:'REST API về dinh dưỡng, xác thực JWT và phân quyền bằng Spring Boot.',
+    contactLabel:'LIÊN HỆ',contactTitle:'Cùng trao đổi về sản phẩm tiếp theo.',contactText:'Bạn muốn tìm hiểu thêm về kinh nghiệm, dự án hoặc cách tôi làm việc? Gửi tôi một email nhé.',
+    email:'Viết email',copy:'Sao chép email',copied:'Đã sao chép',copyFailed:'Không thể sao chép. Hãy dùng nút viết email.', footer:'Thiết kế cho trải nghiệm. Xây dựng để sử dụng.',
+    sourceNote:'Chỉ mô tả tính năng và đóng góp; không chia sẻ mã nguồn hoặc dữ liệu nội bộ.',
+    back:'Về đầu trang',filterLabel:'Lọc dự án theo nền tảng',menu:'Mở điều hướng', skip:'Đến nội dung chính',
+  },
+  en: {
+    nav:['Home','Work','About','Skills','Contact'],role:'Mobile Developer',
+    eyebrow:'PHẠM QUANG HUY · PORTFOLIO',hero1:'Real workflows.',hero2:'Thoughtful mobile',hero3:'experiences.',
+    intro:'I build with Flutter and React Native, connecting real business workflows with mobile experiences that are easy to use.',
+    view:'Explore my work',cv:'Download English CV',current:'Currently at Mebisoft',since:'Since November 2025',
+    heroNote:'A look at the products I help build.',diagram:'Illustrative feature map',
+    selected:'COMPANY PROJECTS',workTitle:'Real products. Real problems.',
+    workIntro:'Three different domains, one shared focus: making everyday workflows clear and consistent on mobile.',
+    all:'All work',detail:'Explore contributions',close:'Close details',contribution:'Modules I contribute to',stack:'Built with',projectLabel:'Company project · Mebisoft',
+    aboutLabel:'ABOUT ME',aboutTitle:'Understand the data. Care about the interaction.',
+    aboutText:'I’m Huy, a Fresher Mobile Developer at Mebisoft. With a foundation in Flutter, I also work with React Native across CRM, shrimp-farming operations and product discovery.',
+    aboutText2:'I care about code organization, state management and API integration that connect a feature from end to end. My backend foundation helps me collaborate across the mobile and server boundary.',
+    education:'Software Engineering · HUTECH',educationDate:'2021–2025',job:'Fresher Mobile Developer',jobDate:'Nov 2025–Present',
+    skillsLabel:'TOOLKIT',skillsTitle:'The right tools for the problem.',skillGroups:['Mobile development','State & data','Integrations & foundations','How I work'],
+    ways:['Feature-oriented code organization','Business workflow analysis','Documentation & self-directed learning','Mobile–backend collaboration'],
+    personal:'PERSONAL PROJECTS',personalTitle:'A space to experiment and learn.',
+    outfit:'Wardrobe management, OOTD planning and account authentication with Flutter.',food:'Nutrition REST APIs with JWT authentication and authorization in Spring Boot.',
+    contactLabel:'GET IN TOUCH',contactTitle:'Let’s talk about the next product.',contactText:'Curious about my experience, projects or how I work? Send me an email.',
+    email:'Write an email',copy:'Copy email',copied:'Copied',copyFailed:'Could not copy. Please use the email button.',footer:'Designed for the experience. Built to be used.',
+    sourceNote:'Feature descriptions and contributions only. No internal source code or business data is shared.',back:'Back to top',filterLabel:'Filter projects by platform',menu:'Open navigation',skip:'Skip to main content',
+  }
+}

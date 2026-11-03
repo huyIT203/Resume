@@ -1,0 +1,144 @@
+@font-face {
+  font-family: 'TAN Angleton';
+  src: local('TAN Angleton'), local('TAN - ANGLETON'), local('TAN Angleton Regular');
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Gentlemens Script';
+  src: url('/fonts/GentlemensScript.woff2') format('woff2');
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'PT Serif';
+  src: url('/fonts/PTSerif-Regular.ttf') format('truetype');
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'PT Serif';
+  src: url('/fonts/PTSerif-Bold.ttf') format('truetype');
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'PT Serif';
+  src: url('/fonts/PTSerif-Italic.ttf') format('truetype');
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+}
+
+.intro {
+  position: relative;
+  isolation: isolate;
+  display: grid;
+  align-items: end;
+  justify-items: center;
+  min-height: 100vh;
+  min-height: 100svh;
+  padding: 32px 24px max(32px, env(safe-area-inset-bottom));
+  overflow: hidden;
+  background: #648bad;
+  color: #fff;
+  color-scheme: light;
+  outline: none;
+}
+
+.heading {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: max-content;
+  max-width: calc(100% - 48px);
+  margin: 0;
+  color: #f4efa1;
+  font-family: 'TAN Angleton', 'Playfair Display', Georgia, serif;
+  font-size: clamp(28px, 10vw, 180px);
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.2;
+  letter-spacing: -0.045em;
+  text-align: center;
+  text-wrap: balance;
+}
+
+.headingLine {
+  display: inline-block;
+  white-space: nowrap;
+}
+
+.scriptTitle {
+  position: absolute;
+  z-index: 1;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(-8deg);
+  color: #fff;
+  font-family: 'Gentlemens Script', 'Freestyle Script', 'Brush Script MT', cursive;
+  font-size: clamp(64px, 13vw, 220px);
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: 0;
+  font-kerning: normal;
+  font-variant-ligatures: common-ligatures contextual;
+  white-space: nowrap;
+  -webkit-text-stroke: clamp(3px, 0.4vw, 5px) #6b91ad;
+  paint-order: stroke fill;
+}
+
+.scriptTitle [data-slot='splitting-text'] > span[aria-hidden='true'] > span > span:first-child {
+  margin-inline-end: -0.08em;
+}
+
+.credit {
+  position: relative;
+  margin-top: 32px;
+  color: #fff;
+  font-family: 'PT Serif', 'Playfair Display', Georgia, serif;
+  text-align: center;
+}
+
+.creditLabel {
+  margin: 0;
+  font-size: 18px;
+  font-style: italic;
+  font-weight: 400;
+  line-height: 1.4;
+}
+
+.creditName {
+  margin: 4px 0 0;
+  font-size: 21px;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+.background {
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  background-image: url('/images/intro/sky-clouds.png');
+  background-position: center bottom;
+  background-size: cover;
+  background-repeat: no-repeat;
+  pointer-events: none;
+}
+
+@media (max-width: 620px) {
+  .background {
+    background-position: 70% bottom;
+  }
+}
+
