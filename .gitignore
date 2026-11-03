@@ -1,0 +1,59 @@
+# Dependencies and generated files
+node_modules/
+dist/
+build/
+coverage/
+*.tsbuildinfo
+*.log
+output/
+outputs/
+tmp/
+temp/
+
+# Environment files: never commit real credentials
+.env
+.env.*
+!.env.example
+!.env.*.example
+.envrc
+.npmrc
+.yarnrc.yml
+
+# Local deployment, cloud, and agent configuration
+.vercel/
+.netlify/
+.openai/
+.aws/
+.azure/
+.ssh/
+.agents/
+.codex/
+.cursor/
+.claude/
+.playwright-cli/
+playwright-report/
+test-results/
+
+# Private keys, credentials, and local databases
+*.pem
+*.key
+*.p12
+*.pfx
+*.keystore
+*.jks
+credentials.json
+service-account*.json
+serviceAccount*.json
+*-firebase-adminsdk-*.json
+*.sqlite
+*.sqlite3
+*.db
+
+# Editor and operating-system state
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
+Desktop.ini
+*.swp
+*.swo

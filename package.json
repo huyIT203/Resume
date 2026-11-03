@@ -1,0 +1,36 @@
+{
+  "name": "pham-quang-huy-portfolio",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite --host 127.0.0.1",
+    "build": "tsc -b && vite build",
+    "preview": "vite preview --host 127.0.0.1",
+    "build:portable": "tsc -b && node scripts/build-portable.mjs",
+    "analyze": "tsc --noEmit --noUnusedLocals --noUnusedParameters"
+  },
+  "dependencies": {
+    "@animate-ui/react": "^2.4.1",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "lucide-react": "^0.468.0",
+    "motion": "^14.9.0",
+    "radix-ui": "^1.8.1",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "react-router": "^7.18.5",
+    "tailwind-merge": "^3.0.0"
+  },
+  "devDependencies": {
+    "@tailwindcss/vite": "^4.1.0",
+    "@types/node": "^22.0.0",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "@vitejs/plugin-react": "^4.7.0",
+    "tailwindcss": "^4.1.0",
+    "terser": "^5.51.2",
+    "typescript": "~5.7.3",
+    "vite": "^6.4.1"
+  }
+}

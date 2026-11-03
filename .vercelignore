@@ -1,0 +1,8 @@
+node_modules
+.agents
+.codex
+scripts
+README.md
+COMPONENT-SOURCES.md
+THIRD-PARTY-LICENSES.txt
+*.tsbuildinfo
