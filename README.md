@@ -8,7 +8,7 @@ Tôi là Huy, một Mobile Developer làm việc với **Flutter** và **React N
 
 ## Về tôi
 
-Tôi có nền tảng Kỹ thuật phần mềm tại HUTECH và đang làm việc tại Mebisoft với vai trò Fresher Mobile Developer. Các dự án tôi tham gia trải rộng từ CRM và chăm sóc khách hàng đến vận hành nuôi tôm và mua sắm.
+Tôi có nền tảng Kỹ thuật phần mềm tại Đại học Công nghệ TP.HCM và đang làm việc tại Mebisoft với vai trò Fresher Mobile Developer. Các dự án tôi tham gia trải rộng từ CRM và chăm sóc khách hàng đến vận hành nuôi tôm và mua sắm.
 
 Tôi quan tâm đến cách tổ chức mã nguồn, quản lý trạng thái và tích hợp API để mỗi tính năng hoạt động xuyên suốt. Nền tảng backend giúp tôi hiểu luồng dữ liệu và phối hợp giữa ứng dụng di động với hệ thống phía sau.
 
