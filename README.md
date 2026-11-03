@@ -1,8 +1,8 @@
-# Phạm Quang Huy — portfolio
+# Resume — Phạm Quang Huy
 
 Production: https://pham-quang-huy-portfolio.vercel.app
 
-Local project: `E:\du-an-ca-nhan\portfolio-moi`
+Repository: https://github.com/huyIT203/Resume
 
 React 19.3 + Vite + TypeScript + React Router. Vietnamese/English, light/dark/system themes. No backend or environment secrets are needed.
 
