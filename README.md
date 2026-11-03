@@ -1,65 +1,37 @@
-# Resume — Phạm Quang Huy
+# Phạm Quang Huy · Mobile Developer
 
-Production: https://pham-quang-huy-portfolio.vercel.app
+Từ nghiệp vụ thực tế đến trải nghiệm trên di động.
 
-Repository: https://github.com/huyIT203/Resume
+Tôi là Huy, một Mobile Developer làm việc với **Flutter** và **React Native**. Portfolio này giới thiệu những sản phẩm tôi tham gia phát triển, kinh nghiệm làm việc và cách tôi kết nối luồng dữ liệu với trải nghiệm người dùng.
 
-React 19.3 + Vite + TypeScript + React Router. Vietnamese/English, light/dark/system themes. No backend or environment secrets are needed.
+**[Khám phá portfolio →](https://pham-quang-huy-portfolio.vercel.app)**
 
-## Development
+## Về tôi
 
-```powershell
-npm ci
-npm run dev
-npm run build
-npm run preview
-```
+Tôi có nền tảng Kỹ thuật phần mềm tại HUTECH và đang làm việc tại Mebisoft với vai trò Fresher Mobile Developer. Các dự án tôi tham gia trải rộng từ CRM và chăm sóc khách hàng đến vận hành nuôi tôm và mua sắm.
 
-When the restricted Windows execution environment blocks esbuild child-process pipes with `spawn EPERM`, use `npm run build:portable`. This still uses Vite/Rollup, TypeScript and Tailwind, and minifies with Terser in process. The standard `npm run build` remains the Vercel command.
+Tôi quan tâm đến cách tổ chức mã nguồn, quản lý trạng thái và tích hợp API để mỗi tính năng hoạt động xuyên suốt. Nền tảng backend giúp tôi hiểu luồng dữ liệu và phối hợp giữa ứng dụng di động với hệ thống phía sau.
 
-## Pages
+## Dự án tiêu biểu
 
-- `/`: overview and selected projects.
-- `/projects`: company projects, platform filter and personal work.
-- `/projects/mebione`, `/projects/dss`, `/projects/mebipha`: independent project pages, verified contributions, technology and store links.
-- `/about`: profile, education and professional experience.
-- `/skills`: toolkit.
-- `/contact`: email, copy-email control, GitHub, LinkedIn and CV.
-- Unknown routes show a designed 404 page.
+- **Mebione / Mebieco** — Ứng dụng phục vụ vận hành nuôi tôm. Tôi tham gia các module báo cáo, kế hoạch nuôi, lịch điều khiển thiết bị và tích hợp dịch vụ AI. Sử dụng React Native, Expo và TypeScript.
+- **DSS-CRM** — Ứng dụng hỗ trợ bán hàng và chăm sóc khách hàng. Đóng góp của tôi tập trung vào Customer360, cơ hội bán hàng, chuyển đổi lead và trải nghiệm cuộc gọi. Sử dụng Flutter, Dart và BLoC.
+- **Mebipha** — Ứng dụng tìm kiếm sản phẩm và giỏ hàng. Tôi tham gia luồng tài khoản, danh mục, chi tiết sản phẩm và tích hợp dữ liệu giỏ hàng. Sử dụng React Native, TypeScript, Redux Toolkit và Redux Saga; một số module đang trong quá trình phát triển.
 
-Navigation uses real URLs rather than section anchors. Vercel rewrites preserve direct opening and refresh on nested URLs. Browser history and an accessible main-content focus are handled on route changes.
+Bên cạnh các dự án tại công ty, tôi phát triển **Outfit Planner** với Flutter và **Food API** với Java, Spring Boot để thử nghiệm ý tưởng và mở rộng kỹ năng.
 
-## Animate UI
+## Ngôn ngữ & công nghệ
 
-- Official React Router Page Transition with `effect="stack"`. Back links use its `nav-back` type. Browsers without View Transitions navigate immediately. Browser Back in the upstream React Router implementation may not animate; it remains functional.
-- Official Theme Toggler and its animated button/icon. The selection is saved as `portfolio-theme`; an early script applies it before the app mounts.
-- Official Button, Collapsible, Context Menu and Dropdown Menu primitives. Project menus open by right-click or a visible ellipsis button.
-- Animated Lucide icons copied from the Animate UI registry. No static Lucide components or Unicode pictograms are used for controls.
-- Official navigation Highlight and Fade entrances. Animate UI's provider and reduced-motion configuration govern the primitives. Optional Magic UI BlurFade remains available.
-- Outfit, the font used by Animate UI, is self-hosted; Be Vietnam Pro supplies fallback Vietnamese glyphs. Font OFL notices are included under `public/fonts`.
+- **Ngôn ngữ:** Dart, TypeScript, Java.
+- **Phát triển di động:** Flutter, React Native, Expo.
+- **Quản lý trạng thái & dữ liệu:** BLoC, Zustand, Redux Toolkit, Redux Saga, TanStack Query.
+- **Tích hợp & backend:** REST API, Dio, Axios, Firebase, SIP / WebRTC, Spring Boot, PostgreSQL.
+- **Website portfolio:** React, TypeScript, Vite, Tailwind CSS, Animate UI và Motion.
 
-Registry configuration: `components.json`. Project-local skill: `.agents/skills/animate-ui`. Project-local MCP: `.codex/config.toml`. Detailed component origins: `COMPONENT-SOURCES.md`. Retain `THIRD-PARTY-LICENSES.txt` and font notices when distributing source.
+## Trải nghiệm portfolio
 
-## Content
+Website hỗ trợ **tiếng Việt và tiếng Anh**, giao diện sáng/tối theo lựa chọn hoặc cài đặt hệ thống, cùng bố cục thích ứng trên di động và máy tính. Mỗi dự án trình bày bài toán, công nghệ và phạm vi đóng góp của tôi.
 
-`src/content.ts` contains bilingual copy, project details, technology and store links. `src/pages/PortfolioPages.tsx` renders the pages. `src/App.tsx` owns navigation and the application frame; `src/styles.css` owns the responsive layout and themes.
+## Kết nối
 
-Employer/title: Mebisoft, Fresher Mobile Developer, November 2025–present. Personal contributions were checked against Git history and confirmed by Huy. Mebione is published as **Mebieco**; DSS-CRM as **DSS**. Both have Google Play and App Store links. Mebipha remains described as development work. No company source, internal screenshots or customer data is included. Illustrations are feature maps, not application screenshots.
-
-The latest English CV is served as `public/PhamQuangHuy_CV.pdf`. Contact uses mailto and clipboard; it does not pretend to send a server form.
-
-## Verification
-
-TypeScript and the portable Vite build pass. Semantic DOM checks pass for route navigation, project filtering, detail pages, collapse/expand, both menu entry points, theme persistence, language, browser Back and 404 handling. The DOM harness uses platform shims and does not check animation appearance or responsive geometry.
-
-Visual browser QA was interrupted because the computer-use safety layer could not determine Chrome's current URL confidently. Animation frames, real font rendering and mobile geometry still require a visual review. No alternate browser-control mechanism was used to bypass that stop.
-
-## Deployment
-
-The linked Vercel project is `huyit203s-projects/pham-quang-huy-portfolio`. Confirm the target with `vercel project inspect --non-interactive` before running `vercel deploy --prod`. Credentials and `.vercel` state must remain outside source archives.
-
-
-Primary font updated at the owner’s request to **Playfair Display** (400–900), self-hosted from the official Google Fonts repository. Vietnamese coverage is confirmed in upstream METADATA.pb. Font source: https://github.com/google/fonts/tree/main/ofl/playfairdisplay . License: `public/fonts/PlayfairDisplay-OFL.txt`. Outfit remains as an unused optional asset.
-
-
-Current primary font: **Merriweather Sans**, self-hosted from the official Google Fonts repository, with Vietnamese coverage confirmed in upstream metadata. Source: https://github.com/google/fonts/tree/main/ofl/merriweathersans . License: `public/fonts/MerriweatherSans-OFL.txt`. This supersedes the Playfair Display trial.
+[Portfolio](https://pham-quang-huy-portfolio.vercel.app) · [GitHub](https://github.com/huyIT203) · [LinkedIn](https://www.linkedin.com/in/ph%E1%BA%A1mquanghuy) · [CV tiếng Anh](https://pham-quang-huy-portfolio.vercel.app/PhamQuangHuy_CV.pdf)
