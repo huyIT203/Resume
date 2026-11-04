@@ -1,0 +1,97 @@
+.clothesline {
+  --rope-height: clamp(60px, 8vw, 112px);
+  --photo-width: clamp(48px, 7.7vw, 125px);
+  position: absolute;
+  inset: 0 0 auto;
+  height: calc(var(--rope-height) + var(--photo-width) * 1.35 + 20px);
+  pointer-events: none;
+}
+
+.rope {
+  position: absolute;
+  inset: 0 0 auto;
+  width: 100%;
+  height: var(--rope-height);
+  overflow: visible;
+  fill: none;
+}
+
+.rope path { vector-effect: non-scaling-stroke; }
+.ropeShadow { stroke: rgb(54 40 19 / 22%); stroke-width: 4; transform: translateY(1px); }
+.ropeBase { stroke: #d7c8a2; stroke-width: 2.5; }
+.ropeTwist { stroke: #f3e5c5; stroke-width: 1; stroke-dasharray: 2 4; }
+
+.hanger {
+  position: absolute;
+  width: var(--photo-width);
+  left: var(--position);
+  top: calc(var(--rope-height) * var(--drop));
+  transform: translateX(-50%);
+  pointer-events: auto;
+}
+
+.hanger:nth-child(2) { --position: 30%; --drop: .6543; }
+.hanger:nth-child(3) { --position: 40%; --drop: .7261; }
+.hanger:nth-child(4) { --position: 50%; --drop: .75; }
+.hanger:nth-child(5) { --position: 60%; --drop: .7261; }
+.hanger:nth-child(6) { --position: 70%; --drop: .6543; }
+
+.swing,
+.draggable { position: relative; transform-origin: center top; }
+.draggable { padding-top: 14px; }
+
+.photo {
+  display: block;
+  width: 100%;
+  padding: 6% 6% 21%;
+  border: 1px solid #d3d3c9;
+  border-radius: 1px;
+  background: linear-gradient(120deg, #f3f1e7, #e1e3dd 85%);
+  box-shadow: 1px 3px 4px rgb(31 47 62 / 18%), inset 0 0 0 1px rgb(255 255 255 / 55%);
+  cursor: grab;
+  touch-action: pan-y;
+}
+
+.photo:active { cursor: grabbing; }
+.photo:focus-visible { outline: 2px solid #fff; outline-offset: 6px; }
+.photo img { width: 100%; aspect-ratio: 1; height: auto; object-fit: cover; user-select: none; pointer-events: none; }
+
+.peg {
+  position: absolute;
+  z-index: 1;
+  top: -18px;
+  left: 50%;
+  width: clamp(5px, .65vw, 10px);
+  height: clamp(33px, 3.8vw, 53px);
+  transform: translateX(-50%) rotate(2deg);
+  border: 1px solid #b9aa86;
+  border-radius: 1px;
+  background: linear-gradient(90deg, #bca77c 0%, #e0d0a8 35%, #c9b78e 72%, #e3d7b9 100%);
+  box-shadow: 1px 1px 1px rgb(58 43 18 / 22%);
+  pointer-events: none;
+}
+
+.peg::after {
+  content: '';
+  position: absolute;
+  top: 58%;
+  left: -1px;
+  right: -1px;
+  height: 2px;
+  background: #8d8064;
+  box-shadow: 0 2px 0 rgb(242 230 200 / 70%);
+}
+
+@media (max-width: 620px) {
+  .clothesline { --rope-height: 74px; --photo-width: 15vw; top: 52px; }
+  .hanger:nth-child(2) { --position: 12%; --drop: .4047; }
+  .hanger:nth-child(3) { --position: 31%; --drop: .6637; }
+  .hanger:nth-child(4) { --position: 50%; --drop: .75; }
+  .hanger:nth-child(5) { --position: 69%; --drop: .6637; }
+  .hanger:nth-child(6) { --position: 88%; --drop: .4047; }
+  .peg { top: -12px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .photo { cursor: pointer; }
+}
