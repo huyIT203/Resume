@@ -11,6 +11,12 @@ Local UI implementations retain their upstream attribution. Keep `THIRD-PARTY-LI
 - Aceternity Typewriter Effect: `src/shared/ui/aceternity/typewriter-effect.tsx`.
   - Source: https://ui.aceternity.com/registry/typewriter-effect.json
   - Adapted to reserve layout space, support reduced motion, and notify the caller on completion.
+- Aceternity Floating Dock: `src/shared/ui/aceternity/floating-dock.tsx`.
+  - Source: https://ui.aceternity.com/registry/floating-dock.json
+  - Adapted into a vertical dock with pointer-Y magnification, fixed hit areas, transform-based scaling, keyboard focus, and action buttons.
+- Animate UI animated Lucide icons: `house`, `terminal`, and `book-open` under `src/shared/ui/animate-ui/icons/`.
+  - Sources: `https://animate-ui.com/r/icons-lucide-{name}.json`.
+  - Runtime: `@animate-ui/react/icons` and `motion/react`. Lucide drawings retain their upstream attribution in `THIRD-PARTY-LICENSES.txt`.
 - Magic UI Highlighter: `src/shared/ui/magicui/highlighter.tsx`.
   - Documentation: https://magicui.design/docs/components/highlighter
   - Uses `rough-notation`; the Home greeting selects its underline action.

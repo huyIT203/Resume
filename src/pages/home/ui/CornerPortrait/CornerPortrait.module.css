@@ -1,0 +1,85 @@
+.portrait {
+  position: absolute;
+  z-index: 1;
+  top: clamp(16px, 2.5vw, 36px);
+  left: clamp(28px, 4vw, 64px);
+  width: clamp(300px, 33.6vw, 408px);
+  aspect-ratio: 300 / 210;
+  margin: 0;
+  color: #fffdf3;
+}
+
+.paper {
+  position: absolute;
+  top: 10%;
+  left: 0;
+  width: 43%;
+  padding: 7px 7px 21px;
+  background: #f8f6ee;
+  clip-path: polygon(
+    0 0,
+    100% 0,
+    100% 100%,
+    90% 95%,
+    80% 100%,
+    70% 95%,
+    60% 100%,
+    50% 95%,
+    40% 100%,
+    30% 95%,
+    20% 100%,
+    10% 95%,
+    0 100%
+  );
+  filter: drop-shadow(0 4px 5px rgb(24 48 70 / 14%));
+}
+
+.paper img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 0.87;
+  object-fit: cover;
+  object-position: 55% 60%;
+}
+
+.caption {
+  position: absolute;
+  top: 16%;
+  left: 52%;
+  width: 35%;
+  transform: rotate(8deg);
+  font-family: 'Italianno', cursive;
+  font-size: clamp(29px, 2.7vw, 39px);
+  font-weight: 400;
+  line-height: 0.95;
+  text-align: center;
+  text-wrap: balance;
+}
+
+.doodles {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  pointer-events: none;
+}
+
+@media (max-width: 620px) {
+  .portrait {
+    top: 18px;
+    left: 78px;
+    width: min(clamp(264px, 72vw, 312px), calc(100% - 90px));
+  }
+}
+
+@media (max-height: 600px) and (min-width: 621px) {
+  .portrait {
+    top: 12px;
+    width: 264px;
+  }
+}

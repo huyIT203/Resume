@@ -17,6 +17,8 @@
 .titleInitial {
   font-family: 'Italianno', cursive;
   font-size: 1.2075em;
+  -webkit-text-stroke: clamp(1.4px, 0.224vw, 4.2px) #f8df72;
+  paint-order: stroke fill;
   /* Reserve the script A's right swash before the B begins. */
   margin-inline-end: 0.27em;
 }
