@@ -1,0 +1,40 @@
+.switcher {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  font-size: 11px;
+}
+.switcher > span {
+  color: var(--line);
+}
+.switcher button {
+  color: var(--muted-foreground);
+  min-width: 30px;
+  min-height: 38px;
+}
+.switcher button[aria-pressed='true'] {
+  color: var(--foreground);
+  font-weight: 600;
+}
+.onSky button {
+  color: rgb(255 255 255 / 70%);
+}
+.onSky button[aria-pressed='true'] {
+  color: #fff;
+}
+.onSky > span {
+  color: rgb(255 255 255 / 40%);
+}
+@media (max-width: 800px) {
+  .switcher button {
+    min-width: 25px;
+  }
+}
+@media (max-width: 620px) {
+  .switcher {
+    font-size: 10px;
+  }
+  .switcher button {
+    min-width: 23px;
+  }
+}
