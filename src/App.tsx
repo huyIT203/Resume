@@ -76,6 +76,7 @@ function PortfolioApp() {
   }, [mobileMenu])
 
   return <PortfolioContext.Provider value={{ locale, setLocale }}>
+    <div className="portfolio-shell">
     <a className="skip-link" href="#main">{c.skip}</a>
     <header className="site-header"><Link to="/home" className="wordmark" aria-label={locale === 'vi' ? 'Phạm Quang Huy — Trang chủ' : 'Phạm Quang Huy — Home'}><span className="brand-symbol">h.</span><span>huy<span className="wordmark-dot">/</span>mobile</span></Link>
       <nav id="primary-navigation" className={mobileMenu ? 'main-nav is-open' : 'main-nav'} aria-label={locale === 'vi' ? 'Điều hướng chính' : 'Main navigation'}><Highlight controlledItems value={activePath} className="nav-active-highlight">{c.nav.map((label, index) => <HighlightItem key={paths[index]} value={paths[index]}><NavLink to={paths[index]} onClick={() => setMobileMenu(false)}>{label}</NavLink></HighlightItem>)}</Highlight></nav>
@@ -83,5 +84,6 @@ function PortfolioApp() {
     </header>
     <main id="main" tabIndex={-1}><PageTransition effect="stack" pageKey={location.pathname} className="route-content"><Routes><Route path="/" element={<Navigate to="/home" replace/>}/><Route path="/home" element={<HomePage/>}/><Route path="/projects" element={<ProjectsPage/>}/><Route path="/projects/:slug" element={<ProjectDetailPage/>}/><Route path="/about" element={<AboutPage/>}/><Route path="/skills" element={<SkillsPage/>}/><Route path="/contact" element={<ContactPage/>}/><Route path="*" element={<NotFoundPage/>}/></Routes></PageTransition></main>
     <footer className="site-footer"><Link to="/home" className="brand-symbol" aria-label={locale === 'vi' ? 'Trang chủ' : 'Home'}>h.</Link><span>© {new Date().getFullYear()} Phạm Quang Huy</span><span className="footer-message">{c.footer}</span><Link to="/contact">{locale === 'vi' ? 'Liên hệ' : 'Get in touch'}<ExternalLink size={14} aria-hidden="true"/></Link></footer>
+    </div>
   </PortfolioContext.Provider>
 }
