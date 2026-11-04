@@ -8,23 +8,6 @@
 :global(:root.dark) .shell {
   --sky-overlay: rgb(17 17 19 / 82%);
 }
-.header {
-  max-width: 1440px;
-  height: 92px;
-  padding: 0 56px;
-  margin: auto;
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  gap: 28px;
-  position: relative;
-  z-index: 10;
-}
-.home .header {
-  position: absolute;
-  inset: 0 0 auto;
-  max-width: none;
-}
 .content {
   min-height: calc(100dvh - 185px);
   background: transparent;
@@ -42,16 +25,4 @@
 }
 .skipLink:focus {
   transform: none;
-}
-@media (max-width: 1100px) {
-  .header {
-    padding-inline: 35px;
-  }
-}
-@media (max-width: 620px) {
-  .header {
-    height: 78px;
-    padding-inline: 23px;
-    gap: 12px;
-  }
 }
