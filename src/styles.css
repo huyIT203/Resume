@@ -1,4 +1,16 @@
 @import "tailwindcss" source(".");
+.portfolio-shell {
+  --sky-overlay: rgb(252 252 252 / 78%);
+  min-height: 100svh;
+  background: linear-gradient(var(--sky-overlay), var(--sky-overlay)),
+    url('/images/intro/sky-clouds.webp') center bottom / cover no-repeat;
+}
+:root.dark .portfolio-shell {
+  --sky-overlay: rgb(17 17 19 / 82%);
+}
+.portfolio-shell .route-content {
+  background: transparent;
+}
 .main-nav a{display:block}
 @font-face{font-family:"Merriweather Sans";src:url("/fonts/MerriweatherSans-variable.ttf") format("truetype");font-style:normal;font-weight:300 800;font-display:swap}
 @font-face{font-family:"Playfair Display";src:url("/fonts/PlayfairDisplay-variable.ttf") format("truetype");font-style:normal;font-weight:400 900;font-display:swap}

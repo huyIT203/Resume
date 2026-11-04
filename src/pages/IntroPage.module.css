@@ -129,7 +129,7 @@
   position: absolute;
   z-index: -1;
   inset: 0;
-  background-image: url('/images/intro/sky-clouds.png');
+  background-image: url('/images/intro/sky-clouds.webp');
   background-position: center bottom;
   background-size: cover;
   background-repeat: no-repeat;
