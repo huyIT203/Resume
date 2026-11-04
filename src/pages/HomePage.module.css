@@ -1,0 +1,59 @@
+@font-face {
+  font-family: 'Italianno';
+  src: url('/fonts/Italianno-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+.home {
+  position: relative;
+  isolation: isolate;
+  min-height: 100svh;
+  overflow: hidden;
+  background: #648bad url('/images/intro/sky-clouds.webp') center bottom / cover no-repeat;
+  color: #fff;
+}
+
+.greeting {
+  position: absolute;
+  top: 37%;
+  left: 0;
+  width: 100%;
+  padding-inline: 24px;
+  text-align: center;
+}
+
+.title {
+  position: absolute;
+  bottom: -0.245em;
+  left: 50%;
+  width: max-content;
+  margin: 0;
+  transform: translateX(-50%) scaleX(0.79);
+  transform-origin: center bottom;
+  font-family: 'Times New Roman', 'Playfair Display', serif;
+  font-size: 23.5vw;
+  font-weight: 400;
+  line-height: 0.85;
+  letter-spacing: -0.04em;
+  white-space: nowrap;
+}
+
+.titleInitial {
+  font-family: 'Italianno', cursive;
+  font-size: 1.2075em;
+  /* Reserve the script A's right swash before the B begins. */
+  margin-inline-end: 0.27em;
+}
+
+.titleSegment { display: inline-block; }
+
+/* Out stays disabled: SplittingText only plays its entrance. */
+
+@media (max-width: 620px) {
+  .home { background-position: 70% bottom; }
+  .greeting { top: 43%; }
+}
+
+
