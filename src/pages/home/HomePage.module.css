@@ -1,0 +1,26 @@
+.home {
+  position: relative;
+  isolation: isolate;
+  min-height: 100svh;
+  overflow: hidden;
+  background: #648bad url('/images/intro/sky-clouds.webp') center bottom / cover no-repeat;
+  color: #fff;
+}
+
+.greeting {
+  position: absolute;
+  top: 37%;
+  left: 0;
+  width: 100%;
+  padding-inline: 24px;
+  text-align: center;
+}
+
+@media (max-width: 620px) {
+  .home {
+    background-position: 70% bottom;
+  }
+  .greeting {
+    top: 43%;
+  }
+}
