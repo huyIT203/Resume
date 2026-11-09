@@ -123,7 +123,7 @@ export function HomePage() {
               <span className={`${styles.cardBack} ${styles.cardFace}`}>
                 <img
                   className={styles.companyLogo}
-                  src="/images/aboutme/tma.webp"
+                  src="/images/aboutme/tma-icon.webp"
                   alt="TMA Solutions"
                 />
                 <span className={styles.companyDates}>
