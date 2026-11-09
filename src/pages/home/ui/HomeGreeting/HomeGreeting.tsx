@@ -11,7 +11,7 @@ function Greeting({ locale, onComplete }: { locale: 'vi' | 'en'; onComplete?: ()
   const [headingDone, setHeadingDone] = useState(false)
   const [subtitleDone, setSubtitleDone] = useState(false)
   const reducedMotion = useReducedMotion()
-  const { greeting: prefix, subtitlePrefix, subtitleRole } = homeCopy[locale]
+  const { greeting: prefix, subtitlePrefix, subtitleRole, subtitleLocation } = homeCopy[locale]
 
   return (
     <>
@@ -56,6 +56,7 @@ function Greeting({ locale, onComplete }: { locale: 'vi' | 'en'; onComplete?: ()
             {subtitleRole}
           </Highlighter>
         </span>
+        {subtitleLocation}
       </motion.p>
     </>
   )

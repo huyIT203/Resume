@@ -11,6 +11,34 @@
   color: #fff;
 }
 
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .onSky {
+      animation: dock-retract linear both;
+      animation-timeline: --home-scroll;
+      animation-range: contain 6svh contain 48svh;
+      transform-origin: left center;
+    }
+
+    .onSky:focus-within {
+      animation: none;
+    }
+  }
+}
+
+@keyframes dock-retract {
+  from {
+    transform: translate(0, -50%) scale(1);
+    opacity: 1;
+    visibility: visible;
+  }
+  to {
+    transform: translate(-120px, -50%) scale(0.85);
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
 .items {
   display: flex;
   flex-direction: column;

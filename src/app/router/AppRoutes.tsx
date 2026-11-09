@@ -34,7 +34,7 @@ export function AppRoutes() {
   }, [navigate])
 
   return (
-    <PageTransition effect="stack" pageKey={showIntro ? 'intro' : 'portfolio'}>
+    <PageTransition effect="center-wipe" pageKey={showIntro ? 'intro' : 'portfolio'}>
       {showIntro ? (
         <IntroPage locale={locale} onEnter={enterPortfolio} />
       ) : (

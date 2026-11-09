@@ -1,13 +1,14 @@
 .title {
+  --bottom-offset: -0.245em;
   position: absolute;
-  bottom: -0.245em;
+  bottom: var(--bottom-offset);
   left: 50%;
   width: max-content;
   margin: 0;
   transform: translateX(-50%) scaleX(0.79);
   transform-origin: center bottom;
   font-family: 'Times New Roman', 'Playfair Display', serif;
-  font-size: 23.5vw;
+  font-size: var(--about-title-size, 23.5vw);
   font-weight: 400;
   line-height: 0.85;
   letter-spacing: -0.04em;
@@ -27,4 +28,34 @@
   display: inline-block;
 }
 
-/* Out stays disabled: SplittingText only plays its entrance. */
+@media (min-width: 768px) {
+  .title {
+    letter-spacing: -0.025em;
+  }
+}
+
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .title {
+      animation:
+        title-rise linear both,
+        title-exit linear forwards;
+      animation-timeline: --home-scroll, --home-scroll;
+      animation-range:
+        contain 60svh contain 90svh,
+        contain 130svh contain 150svh;
+    }
+  }
+}
+
+@keyframes title-exit {
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes title-rise {
+  to {
+    translate: 0 calc(100% - 100svh + var(--bottom-offset) + 1rem);
+  }
+}

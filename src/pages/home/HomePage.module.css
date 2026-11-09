@@ -1,10 +1,444 @@
+.scrollScene {
+  --about-title-size: 21.5vw;
+  position: relative;
+}
+
+@media (min-width: 768px) {
+  .scrollScene {
+    --about-title-size: min(19vw, 220px);
+  }
+}
+
 .home {
   position: relative;
   isolation: isolate;
-  min-height: 100svh;
+  height: 100svh;
   overflow: hidden;
   background: #648bad url('/images/intro/sky-clouds.webp') center bottom / cover no-repeat;
   color: #fff;
+}
+
+.bioGroup {
+  --orbit-base-size: clamp(9.5rem, 30svh, 17rem);
+  --orbit-size: min(calc(var(--orbit-base-size) * 1.5), calc(100vw - 3rem));
+  display: grid;
+  justify-items: center;
+  gap: 0.75rem;
+  margin-inline: auto;
+  padding: 0.75rem 1rem;
+  color: var(--foreground);
+  font-size: clamp(1rem, 2.2vw, 1.5rem);
+  line-height: 1.55;
+  text-align: center;
+  text-wrap: balance;
+}
+
+.bio {
+  max-width: 35ch;
+}
+
+.stickerOrbit {
+  --orbit-radius: calc(var(--orbit-size) * 0.43);
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: var(--orbit-size);
+  aspect-ratio: 1;
+  isolation: isolate;
+}
+
+.orbitTrigger {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .bioGroup {
+    --orbit-base-size: clamp(10.5rem, 33svh, 19rem);
+  }
+}
+
+.stickerRing {
+  position: absolute;
+  inset: 0;
+}
+
+.eyeDock {
+  position: relative;
+  z-index: 1;
+  width: calc(var(--orbit-base-size) * 0.42);
+}
+
+.eyes {
+  display: block;
+  width: 100%;
+  overflow: visible;
+  filter: drop-shadow(0 4px 4px rgb(20 40 64 / 28%));
+}
+
+.eyeShape {
+  transform-origin: center;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .eyeShape[data-visible='true'] {
+    animation: eyes-blink 4.2s ease-in-out infinite;
+  }
+}
+
+.sticker {
+  position: absolute;
+  inset: 50% auto auto 50%;
+  width: calc(var(--orbit-base-size) * 0.13);
+  aspect-ratio: 1;
+  translate: -50% -50%;
+  transform: rotate(var(--angle)) translateY(calc(-1 * var(--orbit-radius)))
+    rotate(calc(-1 * var(--angle)));
+  object-fit: contain;
+  filter: drop-shadow(2px 0 #fff) drop-shadow(-2px 0 #fff) drop-shadow(0 2px #fff)
+    drop-shadow(0 -2px #fff) drop-shadow(0 4px 3px rgb(20 40 64 / 35%));
+}
+
+.bioHighlight {
+  font-weight: 750;
+  line-height: 1.35;
+  white-space: nowrap;
+}
+
+.portraitLayer {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.previews {
+  display: flex;
+  justify-content: center;
+  gap: clamp(1.75rem, 5vw, 4rem);
+  padding: 1rem;
+}
+
+.preview {
+  --card-width: clamp(5rem, 9vw, 8rem);
+  margin: 0;
+  text-align: center;
+  font-family: ui-monospace, monospace;
+  font-size: 0.8rem;
+}
+
+.previewLabel {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: 'Be Vietnam Pro', sans-serif;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.previewCount {
+  min-width: 1.5rem;
+  padding: 0.12rem 0.32rem;
+  border-radius: 999px;
+  background: #edf7ff;
+  color: #254665;
+  font-family: ui-monospace, monospace;
+  font-size: 0.7rem;
+  text-shadow: none;
+}
+
+.cardStack {
+  position: relative;
+  isolation: isolate;
+  width: var(--card-width);
+  aspect-ratio: 1.2;
+  margin: 0 auto 0.65rem;
+  filter: drop-shadow(0 5px 5px rgb(21 39 61 / 24%));
+}
+
+.cardBack,
+.cardFace {
+  position: absolute;
+  inset: 0;
+}
+
+.cardBack {
+  background: #dce9f2;
+  transform: translateX(4px);
+}
+
+.cardBack:first-child {
+  background: #bdcfde;
+  transform: translateX(8px);
+}
+
+.cardFace {
+  display: grid;
+  place-content: center;
+  justify-items: center;
+  gap: 0.2rem;
+  background: #fff8e9;
+  color: #1f364d;
+}
+
+.experiencePreview .cardStack {
+  width: calc(var(--card-width) * 0.86);
+  aspect-ratio: 3 / 4;
+}
+
+.experiencePreview :is(.cardFace, .cardBack) {
+  --perforation: radial-gradient(circle closest-side, #000 97%, transparent) 0 0 / 10px 10px round;
+  mask:
+    var(--perforation),
+    linear-gradient(#000 0 0) center / calc(100% - 10px) calc(100% - 10px) no-repeat;
+}
+
+.experiencePreview .cardFace {
+  place-content: center stretch;
+  background: #fff;
+}
+
+.experiencePreview .cardFace::after {
+  content: '';
+  position: absolute;
+  inset: 0.45rem;
+  border: 1px dashed rgb(31 54 77 / 24%);
+}
+
+.companyLogo {
+  width: 80%;
+  height: auto;
+}
+
+.companyDates {
+  position: absolute;
+  inset: auto 0 0.65rem;
+  color: #526575;
+  font-size: clamp(0.4rem, 0.8vw, 0.625rem);
+  white-space: nowrap;
+}
+
+.projectPreview :is(.cardFace, .cardBack) {
+  border: 1px solid #c5cbd1;
+  border-radius: 7px;
+  background: #0082ca;
+  clip-path: polygon(
+    0 0,
+    36% 0,
+    37.5% 0.5%,
+    39% 2%,
+    45.5% 12%,
+    47% 13.5%,
+    49% 14%,
+    100% 14%,
+    100% 100%,
+    0 100%
+  );
+}
+
+.projectPreview .cardBack {
+  background: #fff;
+  transform: translate(7%, -6%);
+}
+
+.projectPreview .cardBack:first-child {
+  background: #edf7ff;
+  transform: translate(14%, -12%);
+}
+
+.projectPreview .cardFace {
+  place-items: center;
+  padding: 0.5rem;
+  padding-top: 15%;
+}
+
+.projectPreview .cardFace img {
+  width: 85%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  .cardBack {
+    transition: transform 220ms ease-out;
+  }
+
+  .preview:hover .cardBack {
+    transform: translateX(22%);
+  }
+
+  .preview:hover .cardBack:first-child {
+    transform: translateX(44%);
+  }
+
+  .projectPreview:hover .cardBack {
+    transform: translate(15%, -10%);
+  }
+
+  .projectPreview:hover .cardBack:first-child {
+    transform: translate(30%, -20%);
+  }
+}
+
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .scrollScene {
+      height: 295svh;
+      view-timeline: --home-scroll block;
+      view-timeline-inset: 0;
+    }
+
+    .stage {
+      position: sticky;
+      top: 0;
+    }
+
+    .previews {
+      position: absolute;
+      inset: 0.65rem 0 auto;
+      padding: 0;
+      color: #fff;
+      text-shadow: 0 1px 3px rgb(20 40 64 / 65%);
+      pointer-events: none;
+    }
+
+    .preview {
+      animation: preview-rise ease-out both;
+      animation-timeline: --home-scroll;
+      animation-range: contain 155svh contain 177svh;
+    }
+
+    .projectPreview {
+      animation-range: contain 160svh contain 183svh;
+    }
+
+    @media (min-width: 900px) {
+      .previews {
+        inset: 18% clamp(2rem, 7vw, 8rem) auto auto;
+        flex-direction: column;
+        gap: clamp(2rem, 9svh, 6rem);
+      }
+    }
+
+    .bioGroup {
+      --bio-top: calc(var(--about-title-size) * 0.94 + 1.5rem);
+      position: absolute;
+      inset: var(--bio-top) 0 auto;
+      grid-template-columns: minmax(0, 1fr);
+      width: min(100%, calc(35ch + 2rem));
+      color: #fff;
+      text-shadow: 0 1px 4px rgb(20 40 64 / 65%);
+    }
+
+    .orbitTrigger {
+      display: block;
+      position: absolute;
+      /* Start the timed reveal after 90svh of scrolling. */
+      inset: 190svh 0 0;
+      pointer-events: none;
+    }
+
+    .stickerOrbit[data-revealed='false'] {
+      visibility: hidden;
+    }
+
+    .stickerOrbit[data-revealed='true'] .eyes {
+      animation: bio-reveal 180ms ease-out both;
+    }
+
+    .stickerOrbit[data-revealed='true'] .sticker {
+      animation: sticker-pop 420ms ease-out 180ms both;
+    }
+
+    .bio {
+      animation:
+        bio-reveal linear both,
+        bio-dock ease-in-out both;
+      animation-timeline: --home-scroll, --home-scroll;
+      animation-range:
+        contain 109.2svh contain 120svh,
+        contain 155svh contain 175svh;
+    }
+
+    .greeting {
+      animation: greeting-out linear both;
+      animation-timeline: --home-scroll;
+      animation-range: contain 6svh contain 54svh;
+    }
+
+    .portraitLayer {
+      animation: portrait-out linear both;
+      animation-timeline: --home-scroll;
+      animation-range: contain 12svh contain 60svh;
+    }
+  }
+}
+
+@keyframes preview-rise {
+  from {
+    visibility: hidden;
+    opacity: 0;
+    translate: 0 3rem;
+  }
+  to {
+    visibility: visible;
+    opacity: 1;
+    translate: 0 0;
+    pointer-events: auto;
+  }
+}
+
+@keyframes bio-reveal {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+}
+
+@keyframes bio-dock {
+  to {
+    translate: min(0px, calc((100% - 100vw) / 2 + clamp(1rem, 4vw, 4rem)))
+      calc(100svh - 100% - var(--bio-top) - var(--orbit-size) - 1.5rem - clamp(1rem, 4svh, 3rem));
+    text-align: left;
+    text-wrap: wrap;
+  }
+}
+
+@keyframes sticker-pop {
+  from {
+    opacity: 0;
+    scale: 0.25;
+    transform: rotate(var(--angle)) translateY(0) rotate(calc(-1 * var(--angle)));
+  }
+  75% {
+    scale: 1.08;
+  }
+}
+
+@keyframes eyes-blink {
+  0%,
+  91%,
+  97%,
+  100% {
+    scale: 1;
+  }
+
+  94% {
+    scale: 1 0.12;
+  }
+}
+
+@keyframes greeting-out {
+  to {
+    transform: translateY(-48px);
+    opacity: 0;
+  }
+}
+
+@keyframes portrait-out {
+  to {
+    transform: translateY(-160px);
+    opacity: 0;
+  }
 }
 
 .greeting {
@@ -17,6 +451,10 @@
 }
 
 @media (max-width: 620px) {
+  .sticker {
+    width: calc(var(--orbit-base-size) * 0.125);
+  }
+
   .home {
     background-position: 70% bottom;
   }
