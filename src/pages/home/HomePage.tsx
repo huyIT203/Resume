@@ -116,6 +116,54 @@ export function HomePage() {
             {bio.tail}
           </p>
         </div>
+        <div className={styles.previews}>
+          <figure className={`${styles.preview} ${styles.experiencePreview}`}>
+            <div className={styles.cardStack}>
+              <span className={styles.cardBack} />
+              <span className={`${styles.cardBack} ${styles.cardFace}`}>
+                <img
+                  className={styles.companyLogo}
+                  src="/images/aboutme/tma.webp"
+                  alt="TMA Solutions"
+                />
+                <span className={styles.companyDates}>
+                  <time dateTime="2025-06">Jun</time> – <time dateTime="2025-10">Oct 2025</time>
+                </span>
+              </span>
+              <span className={styles.cardFace}>
+                <img
+                  className={styles.companyLogo}
+                  src="/images/aboutme/mebisoft.webp"
+                  alt="Mebisoft"
+                />
+                <span className={styles.companyDates}>
+                  <time dateTime="2025-11">Nov 2025</time> – now
+                </span>
+              </span>
+            </div>
+            <figcaption className={styles.previewLabel}>
+              {locale === 'vi' ? 'Kinh nghiệm' : 'Experience'}
+              <span className={styles.previewCount}>02</span>
+            </figcaption>
+          </figure>
+          <figure className={`${styles.preview} ${styles.projectPreview}`}>
+            <div className={styles.cardStack}>
+              <span className={`${styles.cardBack} ${styles.cardFace}`}>
+                <img src="/images/project/mebipha.svg" alt="Mebipha" />
+              </span>
+              <span className={`${styles.cardBack} ${styles.cardFace}`}>
+                <img src="/images/project/mebieco.svg" alt="Mebieco" />
+              </span>
+              <span className={styles.cardFace}>
+                <img src="/images/project/DSS.svg" alt="DAT CRM" />
+              </span>
+            </div>
+            <figcaption className={styles.previewLabel}>
+              {locale === 'vi' ? 'Dự án' : 'Projects'}
+              <span className={styles.previewCount}>03</span>
+            </figcaption>
+          </figure>
+        </div>
       </div>
     </div>
   )
