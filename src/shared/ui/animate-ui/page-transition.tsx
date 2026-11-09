@@ -15,6 +15,7 @@ type PageTransitionEffect =
   | 'zoom'
   | 'iris'
   | 'wipe'
+  | 'center-wipe'
   | 'bands'
   | 'stack'
   | 'flow'
@@ -211,6 +212,28 @@ const EFFECTS: Record<Effect, (back: boolean, enter: Frame, exit: Frame) => Effe
     },
     exit: still(0.7),
   }),
+  'center-wipe': (_, enter, exit) => {
+    const duration = 0.7
+    const center = (enter.top + enter.bottom) / 2
+    const halfBand = (enter.bottom - enter.top) * 0.03
+    const top = center - halfBand
+    const bottom = center + halfBand
+    return {
+      enter: {
+        clipPath: [
+          `polygon(0 ${top}px, 100% ${top}px, 100% ${bottom}px, 0 ${bottom}px)`,
+          'polygon(0 0, 100% 0, 100% 100%, 0 100%)',
+        ],
+        transition: { duration, ease: ease.resize },
+      },
+      exit: {
+        transform: ['none', 'scale(0.94)'],
+        transformOrigin: [middle(exit), middle(exit)],
+        opacity: [1, 0.6],
+        transition: { duration, ease: ease.resize },
+      },
+    }
+  },
   stack: (back, enter, exit) => {
     const distance = enter.bottom - enter.top
     return {
