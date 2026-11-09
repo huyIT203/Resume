@@ -1,4 +1,5 @@
 .shell {
+  timeline-scope: --home-scroll;
   --sky-overlay: rgb(252 252 252 / 78%);
   min-height: 100svh;
   background:
