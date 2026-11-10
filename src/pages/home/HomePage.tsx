@@ -19,7 +19,7 @@ const stickers = [
   'android',
   'kotlin',
   'react-native',
-  'claude',
+  'claude-robot',
   'firebase',
   'docker',
   'typescript',
@@ -97,10 +97,24 @@ export function HomePage({ introReady = true }: { introReady?: boolean }) {
   const { bio } = homeCopy[locale]
   const [greetingDone, setGreetingDone] = useState(false)
   const [titleDone, setTitleDone] = useState(false)
+  const sceneRef = useRef<HTMLDivElement>(null)
+  const bioRef = useRef<HTMLParagraphElement>(null)
   const orbitTriggerRef = useRef<HTMLDivElement>(null)
   const orbitRevealed = useInView(orbitTriggerRef)
+
+  useEffect(() => {
+    const bioElement = bioRef.current
+    const scene = sceneRef.current
+    if (!bioElement || !scene) return
+    const observer = new ResizeObserver(([entry]) => {
+      scene.style.setProperty('--mobile-bio-height', `${entry.contentRect.height}px`)
+    })
+    observer.observe(bioElement)
+    return () => observer.disconnect()
+  }, [])
+
   return (
-    <div className={styles.scrollScene}>
+    <div ref={sceneRef} className={styles.scrollScene}>
       {!reducedMotion && (
         <div className={styles.cloudSky} aria-hidden="true">
           {theme === 'dark' ? (
@@ -143,7 +157,7 @@ export function HomePage({ introReady = true }: { introReady?: boolean }) {
         </section>
         <div className={styles.bioGroup}>
           <StickerOrbit revealed={orbitRevealed} />
-          <p className={styles.bio}>
+          <p ref={bioRef} className={styles.bio}>
             {bio.lead}
             <Highlighter key={locale} action="underline" className={styles.bioHighlight}>
               {bio.highlight}
