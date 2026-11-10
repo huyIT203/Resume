@@ -1,5 +1,6 @@
 .scrollScene {
   --about-title-size: 21.5vw;
+  --heading-top-space: calc(4rem + env(safe-area-inset-top, 0px));
   position: relative;
   isolation: isolate;
 }
@@ -328,7 +329,7 @@
     }
 
     .bioGroup {
-      --bio-top: calc(var(--about-title-size) * 0.94 + 1.5rem);
+      --bio-top: calc(var(--about-title-size) * 0.94 + var(--heading-top-space) + 0.5rem);
       position: absolute;
       inset: var(--bio-top) 0 auto;
       grid-template-columns: minmax(0, 1fr);
