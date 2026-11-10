@@ -69,9 +69,15 @@
   pointer-events: none;
 }
 
+@media (max-width: 1023px) {
+  .portrait {
+    top: 80px;
+  }
+}
+
 @media (max-width: 620px) {
   .portrait {
-    top: 18px;
+    top: 92px;
     left: 78px;
     width: min(clamp(264px, 72vw, 312px), calc(100% - 90px));
   }
@@ -79,7 +85,7 @@
 
 @media (max-height: 600px) and (min-width: 621px) {
   .portrait {
-    top: 12px;
+    top: 80px;
     width: 264px;
   }
 }
