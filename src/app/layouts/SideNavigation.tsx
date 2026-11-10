@@ -14,8 +14,8 @@ export function SideNavigation() {
     {
       id: 'background',
       title: 'Background',
-      href: '/home',
-      active: pathname === '/home',
+      href: '/',
+      active: pathname === '/',
       icon: (animate) => <Portrait size={22} animate={animate} aria-hidden="true" />,
     },
     {
@@ -46,7 +46,7 @@ export function SideNavigation() {
     <FloatingDock
       items={items}
       label={locale === 'vi' ? 'Điều hướng chính' : 'Main navigation'}
-      onSky={pathname === '/home'}
+      onSky={pathname === '/'}
     />
   )
 }

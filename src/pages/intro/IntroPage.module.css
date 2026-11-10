@@ -8,7 +8,7 @@
   min-height: 100svh;
   padding: 32px 24px max(32px, env(safe-area-inset-bottom));
   overflow: hidden;
-  background: #648bad;
+  background: rgb(15 32 54 / 12%);
   color: #fff;
   color-scheme: light;
   outline: none;
@@ -31,6 +31,16 @@
   letter-spacing: -0.045em;
   text-align: center;
   text-wrap: balance;
+}
+
+.heading[data-opening='true'] {
+  animation: fadeHeading var(--intro-heading-exit, 160ms) ease-out forwards;
+}
+
+@keyframes fadeHeading {
+  to {
+    opacity: 0;
+  }
 }
 
 .headingLine {
@@ -83,21 +93,4 @@
   font-size: 21px;
   font-weight: 600;
   line-height: 1.4;
-}
-
-.background {
-  position: absolute;
-  z-index: -1;
-  inset: 0;
-  background-image: url('/images/intro/sky-clouds.webp');
-  background-position: center bottom;
-  background-size: cover;
-  background-repeat: no-repeat;
-  pointer-events: none;
-}
-
-@media (max-width: 620px) {
-  .background {
-    background-position: 70% bottom;
-  }
 }

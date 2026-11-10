@@ -4,3 +4,5 @@ public/
 package-lock.json
 .agents/
 .codex/
+# Keep the Originkit MCP source verbatim.
+src/components/originkit/ui/cloud-sky.tsx
