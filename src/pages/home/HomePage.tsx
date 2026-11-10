@@ -1,6 +1,8 @@
 import { useEffect, useRef, useState, type CSSProperties } from 'react'
 import { motion, useInView, useReducedMotion, useSpring } from 'motion/react'
 import CloudSky from '@/components/originkit/ui/cloud-sky'
+import CloudSkyNight from '@/components/originkit/ui/cloud-sky-03'
+import { useTheme } from '@/shared/model/theme-context'
 import { useLocale } from '@/features/change-language/model/useLocale'
 import { Highlighter } from '@/shared/ui/magicui/highlighter'
 import { homeCopy } from './content/home-copy'
@@ -89,6 +91,7 @@ function StickerOrbit({ revealed }: { revealed: boolean }) {
 }
 
 export function HomePage({ introReady = true }: { introReady?: boolean }) {
+  const { theme } = useTheme()
   const reducedMotion = useReducedMotion()
   const { locale } = useLocale()
   const { bio } = homeCopy[locale]
@@ -100,16 +103,32 @@ export function HomePage({ introReady = true }: { introReady?: boolean }) {
     <div className={styles.scrollScene}>
       {!reducedMotion && (
         <div className={styles.cloudSky} aria-hidden="true">
-          <CloudSky
-            background="transparent"
-            speed={40}
-            density={70}
-            size={100}
-            clouds={{ softness: 300, shadow: 111, cirrus: 0 }}
-            sun={{ x: 50, y: 100, glow: '#FFFFFF' }}
-            pointer={{ parallax: 0, wind: 0 }}
-            style={{ minWidth: 0, minHeight: 0 }}
-          />
+          {theme === 'dark' ? (
+            <CloudSkyNight
+              background="#050A1A"
+              baseColor="#1C2B4D"
+              accentColor="#2E3850"
+              density={40}
+              speed={reducedMotion ? 0 : 50}
+              size={100}
+              stars={67}
+              clouds={{ softness: 300, shadow: 0 }}
+              moon={{ x: 26, y: 76, glow: '#D6E4FFE6' }}
+              pointer={{ parallax: 0, wind: 0, damping: 1 }}
+              style={{ minWidth: 0, minHeight: 0 }}
+            />
+          ) : (
+            <CloudSky
+              background="transparent"
+              speed={40}
+              density={70}
+              size={100}
+              clouds={{ softness: 300, shadow: 111, cirrus: 0 }}
+              sun={{ x: 50, y: 100, glow: '#FFFFFF' }}
+              pointer={{ parallax: 0, wind: 0 }}
+              style={{ minWidth: 0, minHeight: 0 }}
+            />
+          )}
         </div>
       )}
       <div ref={orbitTriggerRef} className={styles.orbitTrigger} aria-hidden="true" />

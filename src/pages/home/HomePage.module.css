@@ -76,6 +76,7 @@
 }
 
 .eyes {
+  fill: var(--foreground);
   display: block;
   width: 100%;
   overflow: visible;

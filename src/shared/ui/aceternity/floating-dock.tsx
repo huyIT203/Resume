@@ -19,6 +19,7 @@ type DockItemBase = {
   tooltip?: ReactNode
   label?: string
   active?: boolean
+  pressed?: boolean
   icon: (animate: boolean) => ReactNode
 }
 
@@ -159,7 +160,7 @@ function DockIcon({
           </Link>
         )
       ) : (
-        <button {...controlProps} type="button" onClick={item.onSelect}>
+        <button {...controlProps} type="button" aria-pressed={item.pressed} onClick={item.onSelect}>
           {content}
         </button>
       )}
