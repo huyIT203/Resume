@@ -3,6 +3,7 @@ import { useReducedMotion } from 'motion/react'
 import { Navigate, Route, Routes, useLocation } from 'react-router'
 import { useLocale } from '@/features/change-language/model/useLocale'
 import { HomePage } from '@/pages/home/HomePage'
+import { ExperiencePage } from '@/pages/experience/ExperiencePage'
 import { IntroPage } from '@/pages/intro/IntroPage'
 import { PlaceholderPage } from '@/pages/placeholder/PlaceholderPage'
 import { PortfolioLayout } from '../layouts/PortfolioLayout'
@@ -10,6 +11,15 @@ import styles from './AppRoutes.module.css'
 import { ScrollRestoration } from './ScrollRestoration'
 
 const emptyRoutes = ['/projects', '/projects/:slug', '/about', '/skills', '/contact', '*']
+
+function HomeScreen({ introReady }: { introReady: boolean }) {
+  const { state } = useLocation()
+  return state?.homeView === 'experience' ? (
+    <ExperiencePage />
+  ) : (
+    <HomePage introReady={introReady} />
+  )
+}
 
 export function AppRoutes() {
   const location = useLocation()
@@ -45,7 +55,7 @@ export function AppRoutes() {
           <Route path="/intro" element={<Navigate to="/" replace />} />
           <Route path="/home" element={<Navigate to="/" replace />} />
           <Route element={<PortfolioLayout preview={showIntro} />}>
-            <Route index element={<HomePage introReady={!showIntro} />} />
+            <Route index element={<HomeScreen introReady={!showIntro} />} />
             {emptyRoutes.map((route) => (
               <Route key={route} path={route} element={<PlaceholderPage />} />
             ))}

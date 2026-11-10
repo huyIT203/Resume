@@ -20,6 +20,7 @@ type PageTransitionEffect =
   | 'stack'
   | 'flow'
   | 'chop'
+  | 'card-unfold'
   | 'random'
 
 type Effect = Exclude<PageTransitionEffect, 'random'>
@@ -131,6 +132,16 @@ function morphRadius(name: string, from: string | undefined, to: string) {
 const middle = ({ top, bottom }: Frame) => `50% ${(top + bottom) / 2}px`
 
 const EFFECTS: Record<Effect, (back: boolean, enter: Frame, exit: Frame) => EffectAnimation> = {
+  'card-unfold': () => ({
+    enter: {
+      opacity: [0, 0, 1],
+      transition: { duration: 0.65, times: [0, 0.2, 1], ease: ease.out },
+    },
+    exit: {
+      opacity: [1, 0.2, 0],
+      transition: { duration: 0.55, ease: ease.leave },
+    },
+  }),
   fade: () => ({
     enter: {
       opacity: [0, 1],
@@ -432,9 +443,16 @@ function PageTransition({
 
 type PageTransitionSharedProps = React.ComponentProps<'div'> & {
   name: string
+  transition?: React.ComponentProps<typeof AnimateView>['transition']
 }
 
-function PageTransitionShared({ name, ref, ...props }: PageTransitionSharedProps) {
+function PageTransitionShared({
+  name,
+  ref,
+  transition = SHARE,
+  ...props
+}: PageTransitionSharedProps) {
+  const reduce = useShouldReduceMotion()
   const localRef = React.useRef<HTMLDivElement>(null)
   React.useImperativeHandle(ref, () => localRef.current as HTMLDivElement)
   const fromRef = React.useRef<string | undefined>(undefined)
@@ -445,10 +463,12 @@ function PageTransitionShared({ name, ref, ...props }: PageTransitionSharedProps
     radii.set(name, getComputedStyle(localRef.current).borderRadius)
   })
 
+  if (reduce) return <div ref={localRef} data-slot="page-transition-shared" {...props} />
+
   return (
     <AnimateView
       name={name}
-      transition={SHARE}
+      transition={transition}
       onAnimationStart={(_, type) => {
         if (type === 'share' && localRef.current)
           morphRadius(name, fromRef.current, getComputedStyle(localRef.current).borderRadius)

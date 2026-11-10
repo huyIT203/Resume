@@ -156,6 +156,16 @@
   white-space: nowrap;
 }
 
+.previewLink {
+  display: block;
+  border-radius: 8px;
+}
+
+.previewLink:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 10px;
+}
+
 .previewCount {
   min-width: 1.5rem;
   padding: 0.12rem 0.32rem;

@@ -5,6 +5,7 @@ import { projects } from '@/pages/projects/content/projects'
 import { site } from '@/shared/config/site'
 
 const titles = {
+  '/experience': { vi: 'Kinh nghiệm', en: 'Experience' },
   '/': { vi: 'Trang chủ', en: 'Home' },
   '/projects': { vi: 'Dự án', en: 'Work' },
   '/about': { vi: 'Về tôi', en: 'About' },
@@ -13,16 +14,17 @@ const titles = {
 }
 
 export function RouteMetadata() {
-  const { pathname } = useLocation()
+  const { pathname, state } = useLocation()
+  const pagePath = pathname === '/' && state?.homeView === 'experience' ? '/experience' : pathname
   const { locale } = useLocale()
   useEffect(() => {
-    const name = pathname.startsWith('/projects/')
-      ? projects.find((project) => project.id === pathname.split('/')[2])?.name
-      : titles[pathname as keyof typeof titles]?.[locale]
+    const name = pagePath.startsWith('/projects/')
+      ? projects.find((project) => project.id === pagePath.split('/')[2])?.name
+      : titles[pagePath as keyof typeof titles]?.[locale]
     document.title = `${name ? `${name} · ` : ''}${site.name} · ${site.role}`
     document
       .querySelector('meta[name="description"]')
       ?.setAttribute('content', site.description[locale])
-  }, [pathname, locale])
+  }, [pagePath, locale])
   return null
 }

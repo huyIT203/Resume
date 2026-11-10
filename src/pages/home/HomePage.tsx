@@ -1,4 +1,12 @@
-import { useEffect, useRef, useState, type CSSProperties } from 'react'
+import {
+  addTransitionType,
+  startTransition,
+  useEffect,
+  useRef,
+  useState,
+  type CSSProperties,
+} from 'react'
+import { Link, useNavigate } from 'react-router'
 import { motion, useInView, useReducedMotion, useSpring } from 'motion/react'
 import CloudSky from '@/components/originkit/ui/cloud-sky'
 import CloudSkyNight from '@/components/originkit/ui/cloud-sky-03'
@@ -6,6 +14,8 @@ import { useTheme } from '@/shared/model/theme-context'
 import { useLocale } from '@/features/change-language/model/useLocale'
 import { Highlighter } from '@/shared/ui/magicui/highlighter'
 import { homeCopy } from './content/home-copy'
+import { experiences } from '@/shared/content/experiences'
+import { PageTransitionShared } from '@/shared/ui/animate-ui/page-transition'
 import { AboutTitle } from './ui/AboutTitle/AboutTitle'
 import { HangingPhotos } from './ui/HangingPhotos/HangingPhotos'
 import { HomeGreeting } from './ui/HomeGreeting/HomeGreeting'
@@ -91,6 +101,7 @@ function StickerOrbit({ revealed }: { revealed: boolean }) {
 }
 
 export function HomePage({ introReady = true }: { introReady?: boolean }) {
+  const navigate = useNavigate()
   const { theme } = useTheme()
   const reducedMotion = useReducedMotion()
   const { locale } = useLocale()
@@ -114,106 +125,133 @@ export function HomePage({ introReady = true }: { introReady?: boolean }) {
   }, [])
 
   return (
-    <div ref={sceneRef} className={styles.scrollScene}>
-      {!reducedMotion && (
-        <div className={styles.cloudSky} aria-hidden="true">
-          {theme === 'dark' ? (
-            <CloudSkyNight
-              background="#050A1A"
-              baseColor="#1C2B4D"
-              accentColor="#2E3850"
-              density={40}
-              speed={reducedMotion ? 0 : 50}
-              size={100}
-              stars={67}
-              clouds={{ softness: 300, shadow: 0 }}
-              moon={{ x: 26, y: 76, glow: '#D6E4FFE6' }}
-              pointer={{ parallax: 0, wind: 0, damping: 1 }}
-              style={{ minWidth: 0, minHeight: 0 }}
-            />
-          ) : (
-            <CloudSky
-              background="transparent"
-              speed={40}
-              density={70}
-              size={100}
-              clouds={{ softness: 300, shadow: 111, cirrus: 0 }}
-              sun={{ x: 50, y: 100, glow: '#FFFFFF' }}
-              pointer={{ parallax: 0, wind: 0 }}
-              style={{ minWidth: 0, minHeight: 0 }}
-            />
-          )}
-        </div>
-      )}
-      <div ref={orbitTriggerRef} className={styles.orbitTrigger} aria-hidden="true" />
-      <div className={styles.stage}>
-        <section className={styles.home} aria-labelledby="home-title">
-          <div className={styles.portraitLayer}>{titleDone && <CornerPortrait />}</div>
-          {showHangingPhotos && greetingDone && titleDone && <HangingPhotos locale={locale} />}
-          <div className={styles.greeting}>
-            {titleDone && <HomeGreeting onComplete={() => setGreetingDone(true)} />}
+    <>
+      <div ref={sceneRef} className={styles.scrollScene}>
+        {!reducedMotion && (
+          <div className={styles.cloudSky} aria-hidden="true">
+            {theme === 'dark' ? (
+              <CloudSkyNight
+                background="#050A1A"
+                baseColor="#1C2B4D"
+                accentColor="#2E3850"
+                density={40}
+                speed={reducedMotion ? 0 : 50}
+                size={100}
+                stars={67}
+                clouds={{ softness: 300, shadow: 0 }}
+                moon={{ x: 26, y: 76, glow: '#D6E4FFE6' }}
+                pointer={{ parallax: 0, wind: 0, damping: 1 }}
+                style={{ minWidth: 0, minHeight: 0 }}
+              />
+            ) : (
+              <CloudSky
+                background="transparent"
+                speed={40}
+                density={70}
+                size={100}
+                clouds={{ softness: 300, shadow: 111, cirrus: 0 }}
+                sun={{ x: 50, y: 100, glow: '#FFFFFF' }}
+                pointer={{ parallax: 0, wind: 0 }}
+                style={{ minWidth: 0, minHeight: 0 }}
+              />
+            )}
           </div>
-          {introReady && <AboutTitle onComplete={() => setTitleDone(true)} />}
-        </section>
-        <div className={styles.bioGroup}>
-          <StickerOrbit revealed={orbitRevealed} />
-          <p ref={bioRef} className={styles.bio}>
-            {bio.lead}
-            <Highlighter key={locale} action="underline" className={styles.bioHighlight}>
-              {bio.highlight}
-            </Highlighter>
-            {bio.tail}
-          </p>
-        </div>
-        <div className={styles.previews}>
-          <figure className={`${styles.preview} ${styles.experiencePreview}`}>
-            <div className={styles.cardStack}>
-              <span className={styles.cardBack} />
-              <span className={`${styles.cardBack} ${styles.cardFace}`}>
-                <img
-                  className={styles.companyLogo}
-                  src="/images/aboutme/tma-icon.webp"
-                  alt="TMA Solutions"
-                />
-                <span className={styles.companyDates}>
-                  <time dateTime="2025-06">Jun</time> – <time dateTime="2025-10">Oct 2025</time>
-                </span>
-              </span>
-              <span className={styles.cardFace}>
-                <img
-                  className={styles.companyLogo}
-                  src="/images/aboutme/mebisoft.webp"
-                  alt="Mebisoft"
-                />
-                <span className={styles.companyDates}>
-                  <time dateTime="2025-11">Nov 2025</time> – now
-                </span>
-              </span>
+        )}
+        <div ref={orbitTriggerRef} className={styles.orbitTrigger} aria-hidden="true" />
+        <div className={styles.stage}>
+          <section className={styles.home} aria-labelledby="home-title">
+            <div className={styles.portraitLayer}>{titleDone && <CornerPortrait />}</div>
+            {showHangingPhotos && greetingDone && titleDone && <HangingPhotos locale={locale} />}
+            <div className={styles.greeting}>
+              {titleDone && <HomeGreeting onComplete={() => setGreetingDone(true)} />}
             </div>
-            <figcaption className={styles.previewLabel}>
-              {locale === 'vi' ? 'Kinh nghiệm' : 'Experience'}
-              <span className={styles.previewCount}>02</span>
-            </figcaption>
-          </figure>
-          <figure className={`${styles.preview} ${styles.projectPreview}`}>
-            <div className={styles.cardStack}>
-              <span className={`${styles.cardBack} ${styles.cardFace}`}>
-                <img src="/images/project/mebipha.svg" alt="Mebipha" />
-              </span>
-              <span className={`${styles.cardBack} ${styles.cardFace}`}>
-                <img src="/images/project/mebieco.svg" alt="Mebieco" />
-              </span>
-              <span className={styles.cardFace}>
-                <img src="/images/project/DSS.svg" alt="DAT CRM" />
-              </span>
-            </div>
-            <figcaption className={styles.previewLabel}>
-              {locale === 'vi' ? 'Dự án' : 'Projects'}
-              <span className={styles.previewCount}>03</span>
-            </figcaption>
-          </figure>
+            {introReady && <AboutTitle onComplete={() => setTitleDone(true)} />}
+          </section>
+          <div className={styles.bioGroup}>
+            <StickerOrbit revealed={orbitRevealed} />
+            <p ref={bioRef} className={styles.bio}>
+              {bio.lead}
+              <Highlighter key={locale} action="underline" className={styles.bioHighlight}>
+                {bio.highlight}
+              </Highlighter>
+              {bio.tail}
+            </p>
+          </div>
+          <div className={styles.previews}>
+            <figure className={`${styles.preview} ${styles.experiencePreview}`}>
+              <Link
+                to="/"
+                state={{ homeView: 'experience', fromHome: true }}
+                className={styles.previewLink}
+                aria-label={
+                  locale === 'vi' ? 'Xem kinh nghiệm làm việc' : 'Explore work experience'
+                }
+                onClick={(event) => {
+                  if (
+                    event.button !== 0 ||
+                    event.metaKey ||
+                    event.ctrlKey ||
+                    event.shiftKey ||
+                    event.altKey
+                  )
+                    return
+                  event.preventDefault()
+                  startTransition(() => {
+                    addTransitionType('card-unfold')
+                    navigate('/', { state: { homeView: 'experience', fromHome: true } })
+                  })
+                }}
+              >
+                <div className={styles.cardStack}>
+                  <span className={styles.cardBack} />
+                  {experiences.map((experience, index) => (
+                    <PageTransitionShared
+                      key={experience.id}
+                      name={`experience-card-${experience.id}`}
+                      transition={{ duration: 0.6, delay: index * 0.12, ease: [0.22, 1, 0.36, 1] }}
+                      className={
+                        index === experiences.length - 1
+                          ? styles.cardFace
+                          : `${styles.cardBack} ${styles.cardFace}`
+                      }
+                    >
+                      <img
+                        className={styles.companyLogo}
+                        src={experience.logo}
+                        alt={experience.company}
+                      />
+                      <span className={styles.companyDates}>{experience.period[locale]}</span>
+                    </PageTransitionShared>
+                  ))}
+                </div>
+                <span className={styles.previewLabel}>
+                  {locale === 'vi' ? 'Kinh nghiệm' : 'Experience'}
+                  <span className={styles.previewCount}>
+                    {String(experiences.length).padStart(2, '0')}
+                  </span>
+                </span>
+              </Link>
+            </figure>
+            <figure className={`${styles.preview} ${styles.projectPreview}`}>
+              <div className={styles.cardStack}>
+                <span className={`${styles.cardBack} ${styles.cardFace}`}>
+                  <img src="/images/project/mebipha.svg" alt="Mebipha" />
+                </span>
+                <span className={`${styles.cardBack} ${styles.cardFace}`}>
+                  <img src="/images/project/mebieco.svg" alt="Mebieco" />
+                </span>
+                <span className={styles.cardFace}>
+                  <img src="/images/project/DSS.svg" alt="DAT CRM" />
+                </span>
+              </div>
+              <figcaption className={styles.previewLabel}>
+                {locale === 'vi' ? 'Dự án' : 'Projects'}
+                <span className={styles.previewCount}>03</span>
+              </figcaption>
+            </figure>
+          </div>
         </div>
       </div>
-    </div>
+    </>
   )
 }
