@@ -6,3 +6,4 @@ package-lock.json
 .codex/
 # Keep the Originkit MCP source verbatim.
 src/components/originkit/ui/cloud-sky.tsx
+src/components/originkit/ui/cloud-sky-03.tsx

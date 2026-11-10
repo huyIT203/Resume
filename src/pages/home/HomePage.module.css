@@ -1,5 +1,8 @@
 .scrollScene {
   --about-title-size: 21.5vw;
+  --heading-top-space: calc(4rem + env(safe-area-inset-top, 0px));
+  --orbit-base-size: clamp(9.5rem, 30svh, 17rem);
+  --orbit-size: min(calc(var(--orbit-base-size) * 1.5), calc(100vw - 3rem));
   position: relative;
   isolation: isolate;
 }
@@ -7,6 +10,12 @@
 @media (min-width: 768px) {
   .scrollScene {
     --about-title-size: min(19vw, 220px);
+  }
+}
+
+@media (max-width: 899px) and (max-height: 720px) {
+  .scrollScene {
+    --orbit-base-size: clamp(8rem, 26svh, 17rem);
   }
 }
 
@@ -26,8 +35,6 @@
 }
 
 .bioGroup {
-  --orbit-base-size: clamp(9.5rem, 30svh, 17rem);
-  --orbit-size: min(calc(var(--orbit-base-size) * 1.5), calc(100vw - 3rem));
   display: grid;
   justify-items: center;
   gap: 0.75rem;
@@ -54,12 +61,18 @@
   isolation: isolate;
 }
 
+@media (min-width: 900px) {
+  .stickerOrbit {
+    --orbit-radius: calc(var(--orbit-size) * 0.49665);
+  }
+}
+
 .orbitTrigger {
   display: none;
 }
 
 @media (min-width: 768px) {
-  .bioGroup {
+  .scrollScene {
     --orbit-base-size: clamp(10.5rem, 33svh, 19rem);
   }
 }
@@ -76,6 +89,7 @@
 }
 
 .eyes {
+  fill: var(--foreground);
   display: block;
   width: 100%;
   overflow: visible;
@@ -140,6 +154,16 @@
   font-family: 'Be Vietnam Pro', sans-serif;
   font-weight: 600;
   white-space: nowrap;
+}
+
+.previewLink {
+  display: block;
+  border-radius: 8px;
+}
+
+.previewLink:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 10px;
 }
 
 .previewCount {
@@ -289,6 +313,8 @@
 @supports (animation-timeline: view()) {
   @media (prefers-reduced-motion: no-preference) {
     .scrollScene {
+      --bio-top: calc(var(--about-title-size) * 0.94 + var(--heading-top-space) + 0.5rem);
+      --orbit-lift: calc((5rem + env(safe-area-inset-top, 0px) - var(--bio-top) - 0.75rem) * 0.7);
       height: 295svh;
       view-timeline: --home-scroll block;
       view-timeline-inset: 0;
@@ -326,8 +352,33 @@
       }
     }
 
+    @media (max-width: 899px) {
+      .previews {
+        inset: auto 0 clamp(1rem, 4svh, 3rem);
+        display: block;
+        height: 0;
+      }
+
+      .preview {
+        position: absolute;
+      }
+
+      .projectPreview {
+        left: 1rem;
+        bottom: calc(var(--mobile-bio-height, 8rem) + 1.5rem);
+      }
+
+      .experiencePreview {
+        right: 1rem;
+        bottom: 0;
+      }
+
+      .bio {
+        max-width: min(35ch, calc(100vw - 10rem));
+      }
+    }
+
     .bioGroup {
-      --bio-top: calc(var(--about-title-size) * 0.94 + 1.5rem);
       position: absolute;
       inset: var(--bio-top) 0 auto;
       grid-template-columns: minmax(0, 1fr);
@@ -346,6 +397,12 @@
 
     .stickerOrbit[data-revealed='false'] {
       visibility: hidden;
+    }
+
+    .stickerOrbit {
+      animation: orbit-lift ease-in-out both;
+      animation-timeline: --home-scroll;
+      animation-range: contain 130svh contain 150svh;
     }
 
     .stickerOrbit[data-revealed='true'] .eyes {
@@ -377,6 +434,15 @@
       animation-timeline: --home-scroll;
       animation-range: contain 12svh contain 60svh;
     }
+  }
+}
+
+@keyframes orbit-lift {
+  from {
+    translate: 0 0;
+  }
+  to {
+    translate: 0 var(--orbit-lift);
   }
 }
 

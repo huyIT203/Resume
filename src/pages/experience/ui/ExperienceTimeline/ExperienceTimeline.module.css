@@ -1,0 +1,272 @@
+.section {
+  --timeline-accent: #a46a09;
+  position: relative;
+  padding: clamp(4.5rem, 9svh, 6rem) 1.5rem 55svh;
+  color: var(--foreground);
+  background: var(--background);
+}
+
+:global(:root.dark) .section {
+  --timeline-accent: #f8df72;
+}
+
+.content {
+  max-width: 800px;
+  margin-inline: auto;
+}
+
+.heading {
+  margin-bottom: 2.5rem;
+  font-family: 'Times New Roman', 'Playfair Display', serif;
+  font-size: clamp(3rem, 6vw, 4rem);
+  font-weight: 400;
+  letter-spacing: -0.045em;
+  line-height: 1;
+}
+
+.timeline {
+  --card-width: clamp(180px, 27vw, 260px);
+  --dot-center: 18px;
+  --milestone-height: calc(var(--card-width) * 4 / 3 + 44px);
+  position: relative;
+  timeline-scope: --experience-progress;
+}
+
+.track {
+  position: absolute;
+  top: var(--dot-center);
+  bottom: calc(var(--milestone-height) - var(--dot-center));
+  left: 9px;
+  width: 2px;
+  background: var(--line);
+  view-timeline-name: --experience-progress;
+  view-timeline-axis: block;
+  view-timeline-inset: 50% 50%;
+}
+
+.progress {
+  position: absolute;
+  inset: 0;
+  background: var(--timeline-accent);
+  transform-origin: top;
+}
+
+.milestones {
+  display: grid;
+  gap: clamp(3rem, 9svh, 6rem);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.milestone {
+  position: relative;
+  min-height: var(--milestone-height);
+  padding-left: clamp(3rem, 7vw, 5rem);
+}
+
+.dot {
+  position: absolute;
+  top: calc(var(--dot-center) - 8px);
+  left: 2px;
+  width: 16px;
+  height: 16px;
+  border: 3px solid var(--background);
+  border-radius: 50%;
+  background: var(--timeline-accent);
+  box-shadow: 0 0 0 1px var(--timeline-accent);
+}
+
+.period {
+  color: var(--muted-foreground);
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.company {
+  font-size: clamp(1.2rem, 2.4vw, 1.65rem);
+  font-weight: 500;
+  letter-spacing: -0.04em;
+  line-height: 1.2;
+}
+
+.back {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 32px;
+  margin-bottom: 20px;
+  color: var(--muted-foreground);
+  font-size: 13px;
+}
+
+.back:hover {
+  color: var(--foreground);
+}
+
+.stamp {
+  --perforation: radial-gradient(circle closest-side, #000 97%, transparent) 0 0 / 14px 14px round;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: var(--card-width);
+  aspect-ratio: 3 / 4;
+  padding: 24px;
+  color: #1f364d;
+  background: #fff;
+  text-align: center;
+  mask:
+    var(--perforation),
+    linear-gradient(#000 0 0) center / calc(100% - 14px) calc(100% - 14px) no-repeat;
+}
+
+.stampFrame {
+  width: var(--card-width);
+  margin-top: 16px;
+}
+
+.stamp::after {
+  position: absolute;
+  inset: 16px;
+  border: 1px dashed rgb(31 54 77 / 24%);
+  content: '';
+  pointer-events: none;
+}
+
+.logo {
+  width: 80%;
+  height: 72px;
+  margin-bottom: 24px;
+  object-fit: contain;
+}
+
+.stampPeriod {
+  margin-top: 8px;
+  color: #526575;
+  font-size: 12px;
+}
+
+@media (max-height: 720px) {
+  .section {
+    padding-top: 4rem;
+  }
+
+  .back {
+    min-height: 28px;
+    margin-bottom: 12px;
+  }
+
+  .heading {
+    margin-bottom: 24px;
+    font-size: 3rem;
+  }
+
+  .timeline {
+    --card-width: clamp(140px, min(27vw, 30svh), 260px);
+  }
+
+  .milestones {
+    gap: 3rem;
+  }
+
+  .stamp {
+    padding: 20px;
+  }
+
+  .logo {
+    height: 56px;
+    margin-bottom: 16px;
+  }
+
+  .company {
+    font-size: 1.1rem;
+  }
+}
+
+@media (max-height: 560px) {
+  .section {
+    padding-top: 3.5rem;
+  }
+
+  .back {
+    min-height: 24px;
+    margin-bottom: 8px;
+  }
+
+  .heading {
+    margin-bottom: 8px;
+    font-size: 2rem;
+  }
+
+  .timeline {
+    --card-width: clamp(120px, min(27vw, 30svh), 160px);
+  }
+
+  .milestones {
+    gap: 1.5rem;
+  }
+}
+
+@supports (animation-timeline: view()) {
+  .stampFrame {
+    animation: highlight-frame steps(1, end);
+    animation-timeline: --experience-progress;
+  }
+
+  .milestone:last-child .stampFrame {
+    animation-name: highlight-last-frame;
+    animation-fill-mode: forwards;
+  }
+  .progress {
+    animation: fill-track linear both;
+    animation-timeline: --experience-progress;
+    animation-range: cover 0% cover 100%;
+  }
+
+  .dot {
+    animation: reach-milestone steps(1, end) both;
+    animation-timeline: view(block 50% 50%);
+  }
+}
+
+@keyframes highlight-frame {
+  from {
+    filter: drop-shadow(1.5px 0 0 var(--timeline-accent))
+      drop-shadow(-1.5px 0 0 var(--timeline-accent)) drop-shadow(0 1.5px 0 var(--timeline-accent))
+      drop-shadow(0 -1.5px 0 var(--timeline-accent));
+  }
+  to {
+    filter: none;
+  }
+}
+
+@keyframes highlight-last-frame {
+  from,
+  to {
+    filter: drop-shadow(1.5px 0 0 var(--timeline-accent))
+      drop-shadow(-1.5px 0 0 var(--timeline-accent)) drop-shadow(0 1.5px 0 var(--timeline-accent))
+      drop-shadow(0 -1.5px 0 var(--timeline-accent));
+  }
+}
+
+@keyframes fill-track {
+  from {
+    transform: scaleY(0);
+  }
+  to {
+    transform: scaleY(1);
+  }
+}
+
+@keyframes reach-milestone {
+  from {
+    background: var(--background);
+    box-shadow: 0 0 0 1px var(--line);
+  }
+  to {
+    background: var(--timeline-accent);
+    box-shadow: 0 0 0 1px var(--timeline-accent);
+  }
+}

@@ -12,6 +12,9 @@
 .shell.homeShell {
   background: #648bad;
 }
+:global(:root.dark) .shell.homeShell {
+  background: #050a1a;
+}
 .content {
   min-height: calc(100dvh - 185px);
   background: transparent;
