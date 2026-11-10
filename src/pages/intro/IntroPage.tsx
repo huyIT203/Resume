@@ -6,6 +6,7 @@ import styles from './IntroPage.module.css'
 type IntroPageProps = {
   locale: Locale
   onEnter: () => void
+  opening: boolean
 }
 
 const partyInitial = { opacity: 0, scale: 0, y: 4, rotate: -1 }
@@ -21,7 +22,7 @@ const partyTransition = {
   times: [0, 0.001, 0.55, 0.8, 1],
 }
 
-export function IntroPage({ locale, onEnter }: IntroPageProps) {
+export function IntroPage({ locale, onEnter, opening }: IntroPageProps) {
   const mainRef = useRef<HTMLElement>(null)
   const [textFinished, setTextFinished] = useState(false)
 
@@ -49,8 +50,7 @@ export function IntroPage({ locale, onEnter }: IntroPageProps) {
           : 'Welcome to Phạm Quang Huy’s portfolio'
       }
     >
-      <div className={styles.background} aria-hidden="true" />
-      <h1 className={styles.heading} lang="en">
+      <h1 className={styles.heading} data-opening={opening} lang="en">
         <SplittingText
           className={styles.headingLine}
           text="welcome"

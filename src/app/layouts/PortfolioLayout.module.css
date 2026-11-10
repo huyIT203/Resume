@@ -9,6 +9,9 @@
 :global(:root.dark) .shell {
   --sky-overlay: rgb(17 17 19 / 82%);
 }
+.shell.homeShell {
+  background: #648bad;
+}
 .content {
   min-height: calc(100dvh - 185px);
   background: transparent;

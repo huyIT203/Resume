@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState, type CSSProperties } from 'react'
 import { motion, useInView, useReducedMotion, useSpring } from 'motion/react'
+import CloudSky from '@/components/originkit/ui/cloud-sky'
 import { useLocale } from '@/features/change-language/model/useLocale'
 import { Highlighter } from '@/shared/ui/magicui/highlighter'
 import { homeCopy } from './content/home-copy'
@@ -87,7 +88,8 @@ function StickerOrbit({ revealed }: { revealed: boolean }) {
   )
 }
 
-export function HomePage() {
+export function HomePage({ introReady = true }: { introReady?: boolean }) {
+  const reducedMotion = useReducedMotion()
   const { locale } = useLocale()
   const { bio } = homeCopy[locale]
   const [greetingDone, setGreetingDone] = useState(false)
@@ -96,6 +98,20 @@ export function HomePage() {
   const orbitRevealed = useInView(orbitTriggerRef)
   return (
     <div className={styles.scrollScene}>
+      {!reducedMotion && (
+        <div className={styles.cloudSky} aria-hidden="true">
+          <CloudSky
+            background="transparent"
+            speed={40}
+            density={70}
+            size={100}
+            clouds={{ softness: 300, shadow: 111, cirrus: 0 }}
+            sun={{ x: 50, y: 100, glow: '#FFFFFF' }}
+            pointer={{ parallax: 0, wind: 0 }}
+            style={{ minWidth: 0, minHeight: 0 }}
+          />
+        </div>
+      )}
       <div ref={orbitTriggerRef} className={styles.orbitTrigger} aria-hidden="true" />
       <div className={styles.stage}>
         <section className={styles.home} aria-labelledby="home-title">
@@ -104,7 +120,7 @@ export function HomePage() {
           <div className={styles.greeting}>
             {titleDone && <HomeGreeting onComplete={() => setGreetingDone(true)} />}
           </div>
-          <AboutTitle onComplete={() => setTitleDone(true)} />
+          {introReady && <AboutTitle onComplete={() => setTitleDone(true)} />}
         </section>
         <div className={styles.bioGroup}>
           <StickerOrbit revealed={orbitRevealed} />

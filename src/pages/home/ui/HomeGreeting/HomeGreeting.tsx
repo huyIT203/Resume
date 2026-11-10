@@ -52,7 +52,7 @@ function Greeting({ locale, onComplete }: { locale: 'vi' | 'en'; onComplete?: ()
       >
         {subtitlePrefix}
         <span className={styles.role}>
-          <Highlighter action="highlight" color="#24465B" enabled={subtitleDone}>
+          <Highlighter action="highlight" color="#000000" enabled={subtitleDone}>
             {subtitleRole}
           </Highlighter>
         </span>

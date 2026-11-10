@@ -5,7 +5,7 @@ import { projects } from '@/pages/projects/content/projects'
 import { site } from '@/shared/config/site'
 
 const titles = {
-  '/home': { vi: 'Trang chủ', en: 'Home' },
+  '/': { vi: 'Trang chủ', en: 'Home' },
   '/projects': { vi: 'Dự án', en: 'Work' },
   '/about': { vi: 'Về tôi', en: 'About' },
   '/skills': { vi: 'Kỹ năng', en: 'Skills' },
