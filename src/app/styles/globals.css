@@ -82,3 +82,18 @@ p {
 #main {
   outline: 0;
 }
+
+:root[data-theme-reveal] body,
+:root[data-theme-reveal] body * {
+  view-transition-name: none !important;
+}
+
+:root[data-theme-reveal]::view-transition-old(root),
+:root[data-theme-reveal]::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+
+:root[data-theme-reveal]::view-transition-new(root) {
+  z-index: 1;
+}

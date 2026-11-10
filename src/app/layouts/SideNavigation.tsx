@@ -10,6 +10,7 @@ import { Moon02 } from '@/shared/ui/animate-ui/icons/hugeicons/moon-02'
 import { Sun03 } from '@/shared/ui/animate-ui/icons/hugeicons/sun-03'
 import { site } from '@/shared/config/site'
 import { Navbar } from '@/shared/ui/aceternity/resizable-navbar'
+import { revealTheme } from '@/shared/lib/reveal-theme'
 import styles from './SideNavigation.module.css'
 
 export function SideNavigation() {
@@ -146,7 +147,11 @@ export function SideNavigation() {
                 aria-label={themeLabel}
                 title={themeLabel}
                 whileTap={reducedMotion ? undefined : { scale: 0.9 }}
-                onClick={() => setTheme((current) => (current === 'dark' ? 'light' : 'dark'))}
+                onClick={(event) => {
+                  void revealTheme(event.currentTarget, () =>
+                    setTheme((current) => (current === 'dark' ? 'light' : 'dark')),
+                  )
+                }}
               >
                 <AnimatePresence mode="wait" initial={false}>
                   <motion.span
